@@ -1,0 +1,20 @@
+{
+  "name": "hue-shift-syntax",
+  "theme": "syntax",
+  "version": "0.0.0",
+  "description": "Configurable syntax engine/framework with a vivid configuration",
+  "keywords": [
+    "syntax",
+    "theme",
+    "hue",
+    "custom",
+    "configurable",
+    "colorful"
+  ],
+  "repository": "https://github.com/tuomashatakka/hue-shift-syntax",
+  "license": "MIT",
+  "author": "Tuomas Hatakka",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}
