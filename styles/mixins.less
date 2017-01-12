@@ -1,0 +1,18 @@
+
+// Mixins
+.text-styles() {
+
+  &.syntax--bold {
+    font-weight: bold }
+
+  &.syntax--italic {
+    font-style: italic }}
+
+
+.status(@base) {
+
+  &.syntax--changed {
+    color: color-dodge(@base, #fe8) }
+
+  &.syntax--deleted {
+    color: hue-rotate(@base, 60) }}

@@ -1,0 +1,67 @@
+
+atom-text-editor {
+
+  // Base
+  background-color: @syntax-background-color;
+  color: @syntax-text-color;
+
+
+  // User-select
+  .cursor {
+    @overflow: 2px;
+    width: 0px;
+    border-width: 0 0 0 1px;
+    top: -@overflow;
+    padding-bottom: @overflow * 2;
+    box-sizing: content-box;
+    color: @syntax-cursor-color }
+
+  .selection .region {
+    border-radius: 5px;
+    background-color: @syntax-selection-color }
+
+
+  // Guides
+  .wrap-guide {
+    background-color: @syntax-wrap-guide-color }
+
+  .indent-guide {
+    color: @syntax-indent-guide-color }
+
+
+  // Gutter decorations
+  .gutter {
+    background-color: @syntax-gutter-background-color;
+    color: @syntax-gutter-text-color }
+
+  .gutter .line-number.cursor-line {
+    border-radius: 1px;
+    background-color: @syntax-gutter-background-color-selected;
+    color: @syntax-gutter-text-color-selected }
+
+  .gutter .line-number.cursor-line-no-selection {
+    color: @syntax-gutter-text-color-selected }
+
+  .gutter .line-number.folded,
+  .gutter .line-number:after,
+  .fold-marker:after {
+    color: @light-gray }
+
+
+    // Invisibles
+  .invisible-character {
+    color: @syntax-invisible-character-color }
+
+  .invisible {
+    color: @syntax-text-color }
+
+
+  // Search markers
+  .search-results {
+    .marker .region {
+      background-color: transparent;
+      border: 1px solid @syntax-result-marker-color }
+
+    .marker.current-result .region {
+      border: 1px solid @syntax-result-marker-color-selected }}
+}

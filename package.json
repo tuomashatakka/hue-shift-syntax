@@ -1,6 +1,7 @@
 {
   "name": "hue-shift-syntax",
   "theme": "syntax",
+  "main": "./main.js",
   "version": "0.0.0",
   "description": "Configurable syntax engine/framework with a vivid configuration",
   "keywords": [
@@ -16,5 +17,42 @@
   "author": "Tuomas Hatakka",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "underscore": "1.6.0"
+  },
+  "configSchema": {
+    "main": {
+      "title": "Main",
+      "description": "",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "hue": {
+          "title": "Hue",
+          "description": "Overall hue for the syntax theme",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 360,
+          "default": 180
+        },
+        "saturation": {
+          "title": "Saturation",
+          "description": "Vividness of the colors",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 70
+        },
+        "luminance": {
+          "title": "Luminance",
+          "description": "Brightness",
+          "type": "number",
+          "minimum": 30,
+          "maximum": 100,
+          "default": 70
+        }
+      }
+    }
   }
 }

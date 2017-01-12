@@ -1,31 +1,47 @@
+
 @import "colors";
 
-// This defines all syntax variables that syntax themes must implement when they
-// include a syntax-variables.less file.
+                                                                                                                                                                                                                          /*
+Package-specific                                                                                                                                                                                                         */
+@keyword: @primary;
+@keyword-method: @primary;
+@keyword-operator: @primary;
+@keyword-control: @primary;
+@keyword-method: @primary;
 
-// General colors
-@syntax-text-color: @very-light-gray;
-@syntax-cursor-color: white;
-@syntax-selection-color: lighten(@dark-gray, 10%);
+@storage: @primary;
+@class: #eee;
+@function: #eee;
+@comment: @gray;
+@string: mix(@primary, @light-gray, 15%);
+@variable: mix(@primary, @tertiary, 25%);
+@parameter: #a33c8e;
+@interpolation: #36c5e9;
+@section: rgb(58, 207, 129);
+                                                                                                                                                                                                                          /*
+General colors                                                                                                                                                                                                         */
+@syntax-text-color: @string;
+@syntax-cursor-color: @string;
+@syntax-selection-color: @dark-gray;
 @syntax-background-color: @very-dark-gray;
-
-// Guide colors
+                                                                                                                                                                                                                          /*
+Guide colors                                                                                                                                                                                                           */
 @syntax-wrap-guide-color: @dark-gray;
 @syntax-indent-guide-color: @gray;
 @syntax-invisible-character-color: @gray;
-
-// For find and replace markers
+                                                                                                                                                                                                                          /*
+Search markers                                                                                                                                                                                                         */
 @syntax-result-marker-color: @light-gray;
 @syntax-result-marker-color-selected: white;
-
-// Gutter colors
+                                                                                                                                                                                                                          /*
+Gutter decor                                                                                                                                                                                                           */
 @syntax-gutter-text-color: @very-light-gray;
-@syntax-gutter-text-color-selected: @syntax-gutter-text-color;
-@syntax-gutter-background-color: @dark-gray;
-@syntax-gutter-background-color-selected: @gray;
-
-// Diff info
-@syntax-color-renamed: @blue;
-@syntax-color-added: @green;
-@syntax-color-modified: @orange;
-@syntax-color-removed: @red;
+@syntax-gutter-text-color-selected: lighten(@primary, 35%);
+@syntax-gutter-background-color: transparent;
+@syntax-gutter-background-color-selected: mix(@primary, @gray, 25%);
+                                                                                                                                                                                                                          /*
+Diff                                                                                                                                                                                                                 */
+@syntax-color-renamed: @text-color-renamed;
+@syntax-color-added: @text-color-success;
+@syntax-color-modified: @text-color-modified;
+@syntax-color-removed: @text-color-removed;

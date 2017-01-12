@@ -1,14 +1,25 @@
 
-@very-light-gray: #c5c8c6;
-@light-gray: #969896;
-@gray: #373b41;
-@dark-gray: #282a2e;
-@very-dark-gray: #1d1f21;
+@import "ui-variables";
 
-@cyan: #8abeb7;
-@blue: #81a2be;
-@purple: #b294bb;
-@green: #b5bd68;
-@red: #cc6666;
-@orange: #de935f;
-@light-orange: #f0c674;
+
+@hue: 190;
+@sat: 0.75;
+@lum: 0.72;
+
+@primary: hsla(@hue, @sat, @lum, 1);
+@secondary: hsla(@hue + 30, @sat, @lum, 1);
+@tertiary: hsla(@hue - 30, @sat, @lum, 1);
+
+@very-light-gray: lighten(@base-background-color, 60%);
+@light-gray: lighten(@base-background-color, 40%);
+@gray: lighten(@base-background-color, 20%);
+@dark-gray: @base-background-color;
+@very-dark-gray: darken(@base-background-color, 15%);
+
+@cyan: @primary;
+@blue: @primary;
+@purple: @secondary;
+@red: @secondary;
+@green: @tertiary;
+@orange: @tertiary;
+@light-orange: @tertiary;
