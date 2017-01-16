@@ -1,20 +1,24 @@
 
 @import "ui-variables";
+@import "../conf/user";
 
 
-@hue: 190;
-@sat: 0.75;
-@lum: 0.72;
+@hue: @config-hue;
+@sat: @config-saturation / 100;
+@lum: @config-luminance / 100;
+@shift: 30;
 
 @primary: hsla(@hue, @sat, @lum, 1);
-@secondary: hsla(@hue + 30, @sat, @lum, 1);
-@tertiary: hsla(@hue - 30, @sat, @lum, 1);
+@secondary: hsla(@hue + @shift, @sat, @lum, 1);
+@tertiary: hsla(@hue - @shift, @sat, @lum, 1);
 
 @very-light-gray: lighten(@base-background-color, 60%);
 @light-gray: lighten(@base-background-color, 40%);
 @gray: lighten(@base-background-color, 20%);
 @dark-gray: @base-background-color;
 @very-dark-gray: darken(@base-background-color, 15%);
+
+@opaque-dark: fade(#101010, 40%);
 
 @cyan: @primary;
 @blue: @primary;

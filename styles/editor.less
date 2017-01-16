@@ -4,26 +4,31 @@ atom-text-editor {
   // Base
   background-color: @syntax-background-color;
   color: @syntax-text-color;
+  -webkit-filter: brightness(@config-brightness / 100) contrast(@config-contrast / 100);
 
 
   // User-select
   .cursor {
     @overflow: 2px;
-    width: 0px;
+    width: 0px !important;
     border-width: 0 0 0 1px;
     top: -@overflow;
     padding-bottom: @overflow * 2;
     box-sizing: content-box;
+    background-color: @syntax-selection-color;
     color: @syntax-cursor-color }
 
   .selection .region {
-    border-radius: 5px;
+    border-radius: 2px;
+    margin-left: -2px;
+    margin-right: -4px !important;
+    // mix-blend-mode: overlay;
     background-color: @syntax-selection-color }
 
 
   // Guides
   .wrap-guide {
-    background-color: @syntax-wrap-guide-color }
+    background-color: fade(@syntax-wrap-guide-color, 70%) }
 
   .indent-guide {
     color: @syntax-indent-guide-color }
@@ -35,11 +40,12 @@ atom-text-editor {
     color: @syntax-gutter-text-color }
 
   .gutter .line-number.cursor-line {
-    border-radius: 1px;
-    background-color: @syntax-gutter-background-color-selected;
+    // mix-blend-mode: screen;
+    background-color: fade(@syntax-gutter-background-color-selected, 20%);
     color: @syntax-gutter-text-color-selected }
 
   .gutter .line-number.cursor-line-no-selection {
+    border-radius: 2em;
     color: @syntax-gutter-text-color-selected }
 
   .gutter .line-number.folded,
@@ -50,7 +56,7 @@ atom-text-editor {
 
     // Invisibles
   .invisible-character {
-    color: @syntax-invisible-character-color }
+    color: fade(@syntax-invisible-character-color, 40%) }
 
   .invisible {
     color: @syntax-text-color }
@@ -59,9 +65,9 @@ atom-text-editor {
   // Search markers
   .search-results {
     .marker .region {
-      background-color: transparent;
-      border: 1px solid @syntax-result-marker-color }
+      background-color: fade(@syntax-result-marker-color, 40%) !important;
+      border: 0px solid fade(@syntax-result-marker-color, 20%) !important }
 
     .marker.current-result .region {
-      border: 1px solid @syntax-result-marker-color-selected }}
+      border: 3px solid fade(@syntax-result-marker-color-selected, 60%) !important }}
 }
