@@ -2,7 +2,7 @@
   "name": "hue-shift-syntax",
   "theme": "syntax",
   "main": "./main.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Configurable syntax engine/framework with a vivid configuration",
   "keywords": [
     "syntax",
