@@ -2,12 +2,12 @@
 import applyStyles from './lib/config'
 
 
-let disposables
+let subscriptions
 export default {
 
     activate: () => {
       atom.notifications.addInfo("Hue Shift syntax theme activated");
-      disposables = atom.config.observe(
+      subscriptions = atom.config.observe(
         'hue-shift-syntax',
         () => {
           let conf = atom.config.get('hue-shift-syntax')
@@ -22,6 +22,6 @@ export default {
 
     deactivate: () => {
       atom.notifications.addInfo("Hue Shift syntax theme deactivated")
-      disposables.dispose()
+      subscriptions.dispose()
     }
 }
