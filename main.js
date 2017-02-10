@@ -1,5 +1,6 @@
 'use babel'
 import applyStyles from './lib/config'
+import openPreviewPaneItem from './lib/previewPaneItem'
 
 
 let subscriptions
@@ -18,6 +19,10 @@ export default {
             ...conf.modifiers,
           })
         })
+
+      atom.commands.add('atom-workspace', {
+        'hue-shift:open-preview-tab': openPreviewPaneItem,
+      })
     },
 
     deactivate: () => {
