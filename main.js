@@ -3,30 +3,31 @@ import applyStyles from './lib/config'
 import openPreviewPaneItem from './lib/previewPaneItem'
 
 
-let subscriptions
+let subscriptions,
+
+    commands = {
+      'hue-shift:open-preview': openPreviewPaneItem },
+
+    onConfigChange = () => {
+      let conf = atom.config.get('hue-shift-syntax')
+      applyStyles({
+        ...conf.main,
+        ...conf.filter,
+        ...conf.modifiers }) },
+
+    register = (cmds, scope='atom-workspace') => 
+      atom.commands.add(scope, cmds),
+
+    observe = (callback, scope='hue-shift-syntax') =>
+      atom.config.observe(scope, callback)
+
+
 export default {
 
     activate: () => {
-      atom.notifications.addInfo("Hue Shift syntax theme activated");
-      subscriptions = atom.config.observe(
-        'hue-shift-syntax',
-        () => {
-          let conf = atom.config.get('hue-shift-syntax')
-          console.log(conf);
-          applyStyles({
-            ...conf.main,
-            ...conf.filter,
-            ...conf.modifiers,
-          })
-        })
+      subscriptions =
+      observe(onConfigChange)
+      register(commands) },
 
-      atom.commands.add('atom-workspace', {
-        'hue-shift:open-preview-tab': openPreviewPaneItem,
-      })
-    },
-
-    deactivate: () => {
-      atom.notifications.addInfo("Hue Shift syntax theme deactivated")
-      subscriptions.dispose()
-    }
-}
+    deactivate: () =>
+      subscriptions.dispose() }

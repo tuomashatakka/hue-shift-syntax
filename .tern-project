@@ -1,0 +1,29 @@
+{
+  "ecmaVersion": 7,
+  "libs": [
+    "browser"
+  ],
+  "loadEagerly": [
+    "lib/**"
+  ],
+  "plugins": {
+    "node": {
+      "dontLoad": "",
+      "load": "",
+      "modules": ""
+    },
+    "node_resolve": {},
+    "modules": {
+      "dontLoad": "",
+      "load": "",
+      "modules": ""
+    },
+    "es_modules": {},
+    "requirejs": {
+      "baseURL": "",
+      "paths": "",
+      "override": ""
+    },
+    "commonjs": {}
+  }
+}

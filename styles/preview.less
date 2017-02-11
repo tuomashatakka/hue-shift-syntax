@@ -1,0 +1,83 @@
+@import "ui-variables";
+
+.syntax-preview {
+  @editor-width: 35%;
+  overflow-y: auto;
+  position: static;
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  > .editor {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: @editor-width }
+
+  > .config {
+    margin-right: @editor-width }
+
+  // Config sections {
+  .inset-panel {
+    .panel-heading {
+      em { font-weight: 100; }
+    }
+  }
+
+  // Input fields
+  .control-group {
+    display: block;
+    position: relative;
+    margin: 0 0 @component-padding * 2;
+    padding: @component-padding;
+
+    .control-label {}
+
+    .controls {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+
+      *:not(:last-child) {
+        margin: 0 @component-padding * 2 0 0 }}
+
+    output {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%) }
+  }
+
+  // Text editor mouseover fill
+  > .editor:hover .grammar-select {
+    opacity: 1;
+    transition-duration: .1s }
+
+  > .editor .grammar-select {
+    opacity: 0;
+    position: absolute;
+    padding: @component-padding * 2;
+    width: 100%;
+    z-index: 1001;
+    transition: opacity .5s }
+
+  atom-text-editor.editor {
+    height: 100% }
+
+  atom-text-editor.editor::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    transition: background .5s }
+
+  .grammar-select:hover + atom-text-editor.editor::before,
+  atom-text-editor.editor:hover::before {
+    background: fade(@base-background-color, 50%);
+    transition-duration: .1s }
+}
