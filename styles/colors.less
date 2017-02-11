@@ -3,14 +3,18 @@
 @import "../conf/user";
 
 
-@hue:           @config-hue;
-@sat:           @config-saturation / 100;
-@lum:           @config-luminance / 100;
-@shift:         30;
+@hue:                       @config-hue;
+@sat:                       @config-saturation / 100;
+@lum:                       @config-luminance / 100;
+@shift:                     @config-aberration;
 
-@primary:       hsla(@hue, @sat, @lum, 1);
-@secondary:     hsla(@hue + @shift, @sat, @lum, 1);
-@tertiary:      hsla(@hue - @shift, @sat, @lum, 1);
+@primary:                   hsla(@hue, @sat, @lum, 1);
+@secondary:                 hsla(@hue + @shift, @sat, @lum, 1);
+@tertiary:                  hsla(@hue - @shift, @sat, @lum, 1);
+@secondary-half:            hsla(@hue + @shift / 2, @sat, @lum, 1);
+@tertiary-half:             hsla(@hue - @shift / 2, @sat, @lum, 1);
+@secondary-quarter:         hsla(@hue + @shift / 4, @sat, @lum, 1);
+@tertiary-quarter:          hsla(@hue - @shift / 4, @sat, @lum, 1);
 
 
 @base-background-color:     #2e3742;

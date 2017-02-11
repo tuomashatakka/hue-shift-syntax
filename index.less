@@ -1,7 +1,12 @@
-@import "styles/syntax-variables";
+@import (reference) "styles/syntax-variables";
 @import "styles/mixins";
 @import "styles/editor";
 @import "styles/preview";
+@import 'fixtures/default';
+
+.syntax--source {
+  color: @default;
+
 
 .syntax--none {
   color: @comment }
@@ -25,39 +30,44 @@
   color: @cyan }
 
 .syntax-regexp .syntax--source.syntax--ruby.syntax--embedded {
-  color: @orange }
+  color: screen(@primary, @secondary) }
 
 .syntax--storage {
-  color: @storage }
+  color: @storage;
+
+  .set(type,   @storage-subtle) ;
+  .set(entity, @storage-subtle) ;
+}
 
 
 // Keywords and constants
 .syntax--keyword {
   color: @keyword;
 
+  // import statements
   &.syntax--control {
     color: @keyword-control }
 
-  &.syntax--operator {
-    color: @keyword-operator }
+  &.syntax--control ~ .syntax--curly {
+    color: fade(@keyword-control, 40%) }
 
   &.syntax--other.syntax--special-method {
-    color: @keyword-method }
+    color: @function }
 
   &.syntax--other.syntax--unit {
-    color: @orange }}
+    color: @instance }}
 
 
 .syntax--constant {
   color: @keyword;
 
-  &.syntax--character.syntax--escape {
-    color: @string }
-
   &.syntax--numeric {
     color: @keyword }
 
-  &.syntax--other.syntax--color {
+  &.syntax--character.syntax--escape {
+    color: @string }
+
+  &.syntax--other.syntax--color { color: red;
     color: @keyword-control }
 
   &.syntax--other.syntax--symbol {
@@ -67,50 +77,132 @@
 // Entities
 // classes, variables, functions and methods
 .syntax--variable {
-  color: @variable;
+  color: @variable }
 
-  &.syntax--interpolation {
-    color: @interpolation }
+.syntax--variable.syntax--interpolation {
+  color: @interpolation }
 
-  &.syntax--parameter.syntax--function {
-    color: mix(@variable, @function) }}
+.syntax--export,
+.syntax--entity,
+.syntax--function,
+.syntax--class {
+  color: @instance;
 
-
-.syntax--entity {
-  color: @variable;
-
-  &.syntax--name.syntax--function {
-    color: @function }
+  .syntax--variable, // default
+  &.syntax--class {
+    color: @variable }
 
   &.syntax--name.syntax--type {
-    color: @keyword }
+    .underline(0.35);
+    color: @variable;
+    text-decoration: none }
 
-  &.syntax--name.syntax--tag {
-    color: @keyword }
-
+  &.syntax--id,
   &.syntax--name.syntax--section {
     color: @section }
 
-  &.syntax--name.syntax--class,
-  &.syntax--name.syntax--type.syntax--class,
-  &.syntax--other.syntax--inherited-class {
+  .syntax--tag,
+  .syntax--type,
+  .syntax--storage,
+  .syntax--keyword,   // extends
+  .syntax--modifier {  // extends
+    .variant(subtle, @class) }
+
+  .syntax--name,
+  .syntax--entity,
+  .syntax--inherited-class {
     color: @class }
 
-  &.syntax--other.syntax--attribute-name {
+  .syntax--parameters {
+    .variant(dark, @class);
+
+    &.syntax--string,
+    &.syntax--variable,
+    &.syntax--array {
+      color: @syntax-text-color }}
+
+  .syntax--parameter {
+    color: darken(@class, 5%);
+    color: mix(@variable, @function) }}
+
+.syntax--export > .syntax--variable {
+  .variant(dark, @class);
+}
+
+
+.syntax--variable,
+.syntax--export,
+.syntax--entity,
+.syntax--function,
+.syntax--class {
+
+  + .syntax--delimiter {
     color: @variable }
 
+  + .syntax--method-call {
+    color: @default;
+
+    > .syntax--arguments {
+      color: @default }
+
+    > .syntax--brace,
+    > .syntax--brace::before {
+      .variant(dusk, @variable);
+    }
+    > .syntax--delimiter,
+    > .syntax--function {
+      .variant(subtle, @variable) }
+  }
+}
+
+.syntax--property-list .syntax--attribute-selector,
+.syntax--property-list .syntax--attribute-name,
+.syntax--property-list .syntax--name {
+  color: extract(@selector, 1);
+
+  &.syntax--entity {
+    color: extract(@selector, 1) }
+
+  &.syntax--tag {
+    color: extract(@selector, 2) }
+
   &.syntax--id {
-    color: @keyword }}
+    color: extract(@selector, 3) }
 
-.syntax--support.syntax--class {
-  color: @class }
+  &.syntax--attribute-selector,
+  &.syntax--attribute {
+    color: extract(@selector, 4) }
 
-.syntax--support.syntax--function  {
-  color: @function }
+  &.syntax--pseudo-class,
+  &.syntax--pseudo-element {
+    color: extract(@selector, 5) }
+
+  .syntax--string,
+  .syntax--punctuation {
+    -webkit-filter: saturate(50%);
+    color: inherit }
+  .syntax--string {
+    opacity: 1 }
+  .syntax--punctuation {
+    opacity: 0.5 }}
+
+
+.syntax--property-list {
+
+  .syntax--property-name.syntax--type {
+    color: @support-property-name;
+    color: @key }
+
+  .syntax--property-value {
+    color: @value;
+
+    .syntax--constant,
+    .syntax--unit {
+      .variant(darker, @value) }}
+}
 
 .syntax--support.syntax--any-method {
-  color: @function }
-
+    color: @function }
 
 // Punctuation
 // control characters
@@ -120,23 +212,16 @@
   &.syntax--comment {
     color: @comment }
 
-  &.syntax--string,
-  &.syntax--variable,
-  &.syntax--parameters,
-  &.syntax--array {
-    color: @syntax-text-color }
-
   &.syntax--heading,
   &.syntax--identity {
     color: @syntax-text-color }
 
   &.syntax--section.syntax--embedded {
-    color: darken(@primary, 10%) }}
+    color: @section }}
 
 
 .syntax--meta {
-  &.syntax--class {
-    color: @class }
+  color: @punctuation;
 
   &.syntax--link {
     color: @tertiary }
@@ -147,9 +232,20 @@
   &.syntax--selector {
     color: @comment }
 
+  .syntax--brace {
+    color:fade(@function, 50%) }
+
+  .syntax--punctuation {
+    color: fade(@punctuation, 50%) }
+
   &.syntax--separator {
     background-color: @gray;
-    color: @syntax-text-color }}
+    color: @syntax-text-color }
+
+  &.syntax--property-group,
+  &.syntax--property-value {
+   .syntax--support.syntax--constant.syntax--property-value {
+     color: @function-constant }}}
 
 
 .syntax--markup {
@@ -160,7 +256,7 @@
     color: @blue }
 
   &.syntax--inserted {
-    color: @green }
+    color: @syntax-color-added }
 
   &.syntax--list {
     color: @red }
@@ -178,6 +274,10 @@
   &.syntax--heading {
     color: @green }}
 
+@import "styles/grammars/html";
+@import "styles/decorations";
+
+}
 
 // Mini editor
 atom-text-editor[mini] .scroll-view {

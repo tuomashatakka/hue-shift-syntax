@@ -1,0 +1,33 @@
+.syntax--brace.syntax--round::before {
+  content: "(";
+  color: @punctuation;
+  position: absolute;
+  font-size: 1.4em;
+  text-align: center;
+  left: -1px;
+}
+.syntax--brace.syntax--round ~ .syntax--brace.syntax--round::before {
+  content: ")" }
+
+.syntax--brace.syntax--round {
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+.line.cursor-line::before {
+  position: absolute;
+  height: inherit;
+  z-index: -1;
+  content: "\f487";
+  left: 0px;
+  font-size: 1em;
+  vertical-align: middle;
+  font-family: ionicons;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  border-width: 0px 0 0px;
+  margin: 0.15em 0 0 -0.1em;
+}

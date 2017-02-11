@@ -1,5 +1,32 @@
 
 // Mixins
+.apply(@name, @color) {
+
+  @cls: ~".syntax--@{name}";
+
+  @{cls} { color: @color }}
+
+.set(@scope, @color) {
+
+  @cls: ~".syntax--@{scope}";
+
+  &@{cls} { color: @color }}
+
+
+.underline(@opacity) {
+  display: inline-block;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px dotted;
+    opacity: @opacity }}
+
+
 .text-styles() {
 
   &.syntax--bold {
@@ -16,3 +43,36 @@
 
   &.syntax--deleted {
     color: hue-rotate(@base, 60) }}
+
+
+.variant(shifted, @color, @aberration: 10%) {
+  color: desaturate(spin(@color, @shift * @aberration), @aberration/2) }
+
+.variant(dark, @color) {
+  color: darken(@color, 10%) }
+
+.variant(darker, @color) {
+  color: darken(@color, 20%) }
+
+.variant(subtle, @color) {
+  color: multiply(@color, lighten(@string, 15%)) }
+
+.variant(dusk, @color) {
+  @darken:    0%;
+  @saturate:  15%;
+  color:  saturate(
+          darken(
+          mix(
+            @color,
+            @base-background-color
+          ),
+          @darken),
+          @saturate) }
+
+// .variant(iter, @var, @color) {
+//   & when (@var = normal)  { color: @color }
+//   & when (@var = alternate) { color: darken(@color, 15%) }
+//   & when (@var = dark)    { color: darken(@color, 15%) }
+//   & when (@var = darker)  { color: desaturate(darken(@color, 25%), 20%) }
+//   & when (@var = sub)     { color: desaturate(darken(@color, 30%), 40%) }
+// }
