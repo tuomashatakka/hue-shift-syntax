@@ -7,7 +7,7 @@
 > ```As commented by Pekka Havumäki```
 
 
-![Close-up](./assets/closeup-wide.png)
+![Close-up](https://tuomashatakka.github.io/hue-shift-syntax/assets/closeup-wide.png)
 
 > ★★★★★
 >
@@ -15,7 +15,7 @@
 >
 > ```As commented by Pekka Havukoski```
 
-![Grasshopper](./assets/grasshopper.png)
+![Grasshopper](https://tuomashatakka.github.io/hue-shift-syntax/assets/grasshopper.png)
 
 > ★★★★★
 >
@@ -23,7 +23,7 @@
 >
 > ```As commented by Pekka Havula```
 
-![With defaultish config](./assets/blue.png)
+![With defaultish config](https://tuomashatakka.github.io/hue-shift-syntax/assets/blue.png)
 
 
 ### Make your editor fit your favorite colors.
@@ -43,7 +43,7 @@ syntax coloring you've always dreamt of!
 With my superior UI theme ([Reduced Dark UI](http://atom.io/themes/reduced-dark-ui))
 Atom looks sassier than ever:
 
-![parade](./assets/parade.png)
+![parade](https://tuomashatakka.github.io/hue-shift-syntax/assets/parade.png)
 
 So in order to get the full theme starter pack:
 
@@ -56,8 +56,9 @@ So in order to get the full theme starter pack:
 
 Ugly themes may also be created:
 
-![Ugly themes may also be created](./assets/fugly.png)
+![Ugly themes may also be created](https://tuomashatakka.github.io/hue-shift-syntax/assets/fugly.png)
 
+For a couple more screenshots, please see the [assets](https://github.com/tuomashatakka/hue-shift-syntax/blob/master/assets) folder of the package's repo
 
 ## Key concepts
 
