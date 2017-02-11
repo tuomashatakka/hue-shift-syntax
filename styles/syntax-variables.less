@@ -1,39 +1,37 @@
 
 @import "colors";
 
-@primary-dark:              darken(@primary, 10%);
 
                                                                                                                                                                                                                           /*
 Package-specific                                                                                                                                                                                                         */
-@base:                              @base-background-color;
+@primary-dark:                      darken(@primary, 10%);
+@default:                           desaturate(lighten(multiply(@string, @primary), 35%), 2.5%);
+@base:                              @background-color;
+@keyword-control:                   mix(@keyword, @base, 75%);
+
 @keyword:                           @primary;
+@keyword-unit:                      @primary;
+@keyword-method:                    @primary;
 @keyword-method:                    @primary;
 @keyword-operator:                  @primary;
-@keyword-control:                   mix(@keyword, @base, 75%);
-@keyword-method:                    @primary;
-@keyword-unit:                      @primary;
-
-@default:                           desaturate(lighten(multiply(@string, @primary), 35%), 2.5%);
 @storage:                           @primary;
 @class:                             @primary;
+@string:                        mix(@primary, @light-gray, 15%);
+@variable:                      mix(@primary, @tertiary,   25%);
+@storage-subtle:           multiply(@primary, lighten(@string,   15%));
+@section:                           @primary-dark;
 
 @instance:                          @secondary;
 @parameter:                         @secondary;
+@class-minor:              multiply(@secondary, lighten(@string, 35%));
+@class-subtle:             multiply(@secondary, lighten(@string, 15%));
 
-@key:                               mix(desaturate(@tertiary-half, 25%), @base-background-color, 67%);
 @value:                             @tertiary;
 @function:                          @tertiary;
 @interpolation:                     @tertiary;
-
-@variable:                      mix(@primary, @tertiary,   25%);
-@string:                        mix(@primary, @light-gray, 15%);
-@class-minor:              multiply(@secondary, lighten(@string, 35%));
-@class-subtle:             multiply(@secondary, lighten(@string, 15%));
-@storage-subtle:           multiply(@primary, lighten(@string,   15%));
 @function-constant:       softlight(@tertiary, @primary);
-@comment:                           @gray;
 
-@section:                       @primary-dark;
+@comment:                           @gray;
 @selector:               screen(mix(@primary,    @gray, 50%), @secondary), // default
                      desaturate(mix(@primary,    @light-gray,  80%), 20%), // tag
                      desaturate(mix(@secondary,  @light-gray,  80%), 20%), // id
@@ -41,36 +39,47 @@ Package-specific                                                                
                      desaturate(mix(@tertiary,   @light-gray,  80%), 20%); // pseudo
 
 // Css properties
+@key:                               mix(desaturate(@tertiary-half, 25%), @base, 67%);
 @support-property-name:             @secondary;
 @punctuation:                       @light-gray;
+
                                                                                                                                                                                                                           /*
 General colors                                                                                                                                                                                                         */
 @syntax-text-color:                 screen(@string, @primary);
 @syntax-cursor-color:               @string;
+@syntax-background-color:           @background-color;
 @syntax-selection-color:            @opaque-dark;
-@syntax-background-color:           @dark-gray;
+
                                                                                                                                                                                                                           /*
 Guide colors                                                                                                                                                                                                           */
 @syntax-wrap-guide-color:           @dark-gray;
 @syntax-indent-guide-color:         @gray;
 @syntax-invisible-character-color:  @gray;
+
                                                                                                                                                                                                                           /*
 Search markers                                                                                                                                                                                                         */
 @syntax-result-marker-color:          @light-gray;
 @syntax-result-marker-color-selected: white;
+
                                                                                                                                                                                                                           /*
 Gutter decor                                                                                                                                                                                                           */
 @syntax-gutter-text-color:                @very-light-gray;
-@syntax-gutter-text-color-selected:       lighten(@primary, 35%);
 @syntax-gutter-background-color:          transparent;
+@syntax-gutter-text-color-selected:       lighten(@primary, 35%);
 @syntax-gutter-background-color-selected: mix(black, @very-dark-gray, 25%);
+
                                                                                                                                                                                                                           /*
 Diff                                                                                                                                                                                                                 */
 // @syntax-color-renamed: @text-color-renamed;
 // @syntax-color-added: @text-color-success;
 // @syntax-color-modified: @text-color-modified;
 // @syntax-color-removed: @text-color-removed;
-@syntax-color-renamed:    @string;
-@syntax-color-added:      @string;
-@syntax-color-modified:   @string;
-@syntax-color-removed:    @string;
+// @import "ui-variables";
+@text-color-success:      mix(@string, rgb(56, 252, 175));
+@text-color-modified:     mix(@string, rgb(227, 196, 121));
+@text-color-renamed:      mix(@string, rgb(217, 163, 113));
+@text-color-removed:      mix(@string, rgb(252, 81, 132));
+@syntax-color-added:      @text-color-success;
+@syntax-color-modified:   @text-color-modified;
+@syntax-color-renamed:    @text-color-renamed;
+@syntax-color-removed:    @text-color-removed;

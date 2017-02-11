@@ -1,4 +1,5 @@
 
+
 // @import "ui-variables";
 @import "../conf/user";
 
@@ -17,12 +18,15 @@
 @tertiary-quarter:          hsla(@hue - @shift / 4, @sat, @lum, 1);
 
 
-@base-background-color:     #2e3742;
-@very-light-gray:           lighten(@base-background-color, 60%);
-@light-gray:                lighten(@base-background-color, 40%);
-@gray:                      lighten(@base-background-color, 20%);
-@dark-gray:                 @base-background-color;
-@very-dark-gray:            darken(@base-background-color, 15%);
+@foundation:                #1c191f;
+@background-color:          mix(desaturate(softlight(#21272f, @primary), 20%), @foundation, 25%);
+@background-color:          fade(@foundation, unit(@config-background-level, %));
+
+@very-light-gray:           lighten(@background-color, 60%);
+@light-gray:                lighten(@background-color, 40%);
+@gray:                      lighten(@background-color, 20%);
+@dark-gray:                 @background-color;
+@very-dark-gray:            darken(@background-color, 15%);
 
 @opaque-dark:               mix(@primary, #383838);
 

@@ -3,7 +3,7 @@
   "theme": "syntax",
   "main": "./lib/index.js",
   "version": "0.1.2",
-  "description": "Configurable syntax engine/framework with a vivid configuration",
+  "description": "Configurable syntax engine/framework with a vivid array of configuration",
   "keywords": [
     "syntax",
     "theme",
@@ -67,6 +67,14 @@
           "minimum": 1,
           "maximum": 180,
           "default": 95
+        },
+        "background-level": {
+          "title": "Background brightness level",
+          "description": "Percentage of how much the background will be tinted towards black",
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 1
         }
       }
     },

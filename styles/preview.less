@@ -1,6 +1,7 @@
-@import "ui-variables";
+// @import "ui-variables";
 
 .syntax-preview {
+  @component-padding: 1em;
   @editor-width: 35%;
   overflow-y: auto;
   position: static;
@@ -82,6 +83,6 @@
 
   .grammar-select:hover + atom-text-editor.editor::before,
   atom-text-editor.editor:hover::before {
-    background: fade(@base-background-color, 50%);
+    background: fade(@base, 50%);
     transition-duration: .1s }
 }
