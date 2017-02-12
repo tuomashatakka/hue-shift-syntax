@@ -1,27 +1,28 @@
 # Hue Shift - Syntax theme for Atom.io
 
+```
+hue-shift:open-preview
+``` 
+
 > ★★★★★
->
 > It's nice. It's configurable.
 >
-> ```As commented by Pekka Havumäki```
+> `As commented by Pekka Havumäki (fictional character)`
 
 
 ![Close-up](https://tuomashatakka.github.io/hue-shift-syntax/assets/closeup-wide.png)
 
 > ★★★★★
->
 > It's brilliant
 >
-> ```As commented by Pekka Havukoski```
+> `As commented by Pekka Havukoski (fictional character)`
 
 ![Grasshopper](https://tuomashatakka.github.io/hue-shift-syntax/assets/grasshopper.png)
 
 > ★★★★★
->
 > Simply put, it is pure perfection
 >
-> ```As commented by Pekka Havula```
+> `As commented by Pekka Havula (fictional character)`
 
 ![With defaultish config](https://tuomashatakka.github.io/hue-shift-syntax/assets/blue.png)
 
@@ -38,7 +39,7 @@ It's as easy as 1, 2, 3 to finally have the
 syntax coloring you've always dreamt of!
 
 
-## How to make your editor super-kewl (instructions)
+### How to make your editor super-kewl (instructions)
 
 With my superior UI theme ([Reduced Dark UI](http://atom.io/themes/reduced-dark-ui))
 Atom looks sassier than ever:
@@ -52,7 +53,7 @@ So in order to get the full theme starter pack:
  3. ???
  4. Let's go to the mall, **today!**
 
-## Epilogue/bonus
+### Epilogue/bonus
 
 Ugly themes may also be created:
 
@@ -60,7 +61,7 @@ Ugly themes may also be created:
 
 For a couple more screenshots, please see the [assets](https://github.com/tuomashatakka/hue-shift-syntax/blob/master/assets) folder of the package's repo
 
-## Key concepts
+### Key concepts
 
 Also known as: what to expect when you're looking forward to:
 
@@ -68,3 +69,8 @@ Also known as: what to expect when you're looking forward to:
 - [x] Preview changes real-time
 - [ ] Preset saving
 - [ ] Fine tuning of discrete colors: override colors you don't like
+
+
+### Prologue
+
+Benjamin Button pls stahp at 1ce
