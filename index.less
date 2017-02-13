@@ -4,10 +4,6 @@
 @import "styles/preview";
 @import 'fixtures/default';
 
-.syntax--text,
-.syntax--source {
-  color: @default;
-
 
 .syntax--none {
   color: @comment }
@@ -15,6 +11,10 @@
 .syntax--invalid.syntax--illegal {
   color: @syntax-color-removed }
 
+
+.syntax--text,
+.syntax--source {
+  color: @default;
 
 // Text
 // strings, comments & regexp
@@ -68,7 +68,7 @@
   &.syntax--character.syntax--escape {
     color: @string }
 
-  &.syntax--other.syntax--color { color: red;
+  &.syntax--other.syntax--color {
     color: @keyword-control }
 
   &.syntax--other.syntax--symbol {
@@ -127,8 +127,7 @@
     color: mix(@variable, @function) }}
 
 .syntax--export > .syntax--variable {
-  .variant(dark, @class);
-}
+  .variant(dark, @class) }
 
 
 .syntax--variable,
@@ -156,6 +155,7 @@
   }
 }
 
+// CSS selectors
 .syntax--property-list .syntax--attribute-selector,
 .syntax--property-list .syntax--attribute-name,
 .syntax--property-list .syntax--name {
@@ -188,6 +188,7 @@
     opacity: 0.5 }}
 
 
+// CSS Selectors
 .syntax--property-list {
 
   .syntax--property-name.syntax--type {
