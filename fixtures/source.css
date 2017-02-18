@@ -1,0 +1,27 @@
+
+body {
+  background-color: red;
+  color: red;
+  -webkit-font-smoothing: antialiased;
+  filter: blur(20px);
+  transition: filter 0.5s, height 100s;
+}
+
+#identifier {
+  background-color: blue;
+  color: #666969;
+}
+
+.class, .class-two, .class-tre {
+  background-color: orange;
+  width: 12em;
+}
+
+[attribute*="any"] {
+  background-color: orange;
+}
+
+header, footer aside,
+[data-attribute] ~ * > tag-label {
+  background-color: green;
+}

@@ -1,50 +1,15 @@
 'use babel'
 import React, { Component, prop as PropTypes } from 'react'
-import Section from './Section'
-
-const PACKAGE_NAME = `hue-shift-syntax`
-
-
-/**
- * @class PreviewView
- * @extends React.Component
- */
 export default class PreviewView extends Component {
-
   constructor (props) {
     super(props)
     this.editor = props.editor
-    this.state = {
-      open: false
-    }
-  }
-
-  renderFields () {
-    let conf = atom.config.get('hue-shift-syntax')
-    let sections = Object.keys(conf)
-    let pack = PACKAGE_NAME
-
-    return sections.map(section =>
-          <Section
-            key={section}
-            scope={`${pack}.${section}`}
-            />)
+    this.state = { open: false }
   }
 
   render () {
     let { children, choices, updatePreview } = this.props
     let { open } = this.state
-    let editor = this.editor.getElement()
-
-    console.log(choices)
-    // <option value='source.js'>Javascript</option>
-    // <option value='source.css'>Cascading stylesheets</option>
-    // <option value='source.html'>Hypertext markup lingo</option>
-    // <option value='source.python'>Python (not the animal)</option>
-    // <option value='source.php'>PHP</option>
-    // <option value='source.java'>Java</option>
-    // <option value='source.c'>C++</option>
-    // <option value='source.git'>Git diff</option>
     return (
       <section className='syntax-preview'>
 
@@ -69,5 +34,17 @@ export default class PreviewView extends Component {
         </aside>
       </section>
     )
+  }
+
+  renderFields () {
+    let conf = atom.config.get('hue-shift-syntax')
+    let sections = Object.keys(conf)
+    let pack = PACKAGE_NAME
+
+    return sections.map(section =>
+          <Section
+            key={section}
+            scope={`${pack}.${section}`}
+            />)
   }
 }
