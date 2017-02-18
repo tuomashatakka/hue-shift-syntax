@@ -1,0 +1,68 @@
+{
+  "atom": "1.15.0-beta2",
+  "pigments": "0.39.0",
+  "platform": "darwin",
+  "config": {
+    "autocompleteScopes": [
+      ".source.css",
+      ".source.css.less",
+      ".source.sass",
+      ".source.css.scss",
+      ".source.stylus",
+      ".source.less"
+    ],
+    "autocompleteSuggestionsFromValue": true,
+    "delayBeforeScan": 50,
+    "extendAutocompleteToColorValue": true,
+    "extendAutocompleteToVariables": true,
+    "extendedSearchNames": [
+      "**/*.css",
+      "**/*.scss",
+      "**/*.less"
+    ],
+    "groupPaletteColors": "by file",
+    "markerType": "dot",
+    "mergeColorDuplicates": true,
+    "sortPaletteColors": "by color",
+    "traverseIntoSymlinkDirectories": true,
+    "sourceNames": [
+      "**/*.css",
+      "**/*.styl",
+      "**/*.stylus",
+      "**/*.less",
+      "**/*.sass",
+      "**/*.scss"
+    ],
+    "ignoredNames": [
+      "vendor/*",
+      "node_modules/*",
+      "spec/*",
+      "test/*"
+    ],
+    "ignoredBufferNames": [],
+    "supportedFiletypes": [
+      "*"
+    ],
+    "filetypesForColorWords": [
+      "css",
+      "less",
+      "styl",
+      "stylus",
+      "sass",
+      "scss"
+    ],
+    "ignoredScopes": [],
+    "maxDecorationsInGutter": 100,
+    "sassShadeAndTintImplementation": "compass",
+    "ignoreVcsIgnoredPaths": true,
+    "notifyReloads": true,
+    "dismissableReloadNotifications": true
+  },
+  "project": {
+    "config": {},
+    "variables": {
+      "colors": 0,
+      "total": 0
+    }
+  }
+}

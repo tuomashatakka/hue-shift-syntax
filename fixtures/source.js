@@ -2,9 +2,10 @@
 import React from 'react';
 import { readFileSync, readdirSync } from 'fs'
 import { TextBuffer, TextEditor } from 'atom'
-import Preview from './views/Preview'; var ReactDOM = require('react-dom');
+import Preview from './views/Preview';
+var ReactDOM = require('react-dom');
 // Single line comment
-let testHtmlEndTag  = /(\s*<\/?[\s]\w]*>\s*)?/gi
+let testHtmlEndTag  = /(\s*<\/?[\s\w]*>\s*)?/gi
 let contents        = readFileSync(__filename, 'utf8')
 /* Comment with some asterisk-action */
 const PACKAGE_NAME  = 'hue-shift-syntax'
@@ -20,7 +21,7 @@ class HurdurClass extends YourMom {}
  * @return {[type]}      [description]
  */
 module.exports = upDaatePrewwie();
-export function openPreviewPaneItem(opts) {
+export function openPreview(a, b="foo", c=6, {opts}) {
   let getTitle    = () => "Editor Preview"
   let { grammar } = opts || { grammar: 'source.js' }, buffer = new TextBuffer(contents),
     editor = new TextEditor({ buffer }), element = document.createElement('div'), pane = atom.workspace.getActivePane(),
@@ -29,6 +30,7 @@ export function openPreviewPaneItem(opts) {
   ReactDOM.render( <Preview editor={editor} choices={choices} updatePreview={(g) => updatePreview(editor, g)} />, element )
   return item
 }
+
 export default function updatePreview (editor, scope) {
   let fpath     = previewPath(scope)
   let text      = readFileSync(fpath, 'utf8')
@@ -41,7 +43,7 @@ export default function updatePreview (editor, scope) {
     console.info("Grammar change event", scope, editor.getGrammar())
 }
 
-export function getPreviewButton () {
+function getPreviewButton () {
   let btn = document.createElement('button')
   btn.classList.add('btn')
   btn.innerHTML = "Open preview"

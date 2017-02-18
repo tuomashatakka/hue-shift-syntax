@@ -8,7 +8,7 @@ Package-specific                                                                
 @default:                           desaturate(lighten(multiply(@string, @primary), 35%), 2.5%);
 @base:                              @background-color;
 @control:                       mix(@string, @base, 75%);
-@operator:                          @control;
+@operator:                       mix(@blend-basis, @control, 25%);
 @regex:                             @tertiary-half;
 
 @keyword:                           @primary;
@@ -19,9 +19,9 @@ Package-specific                                                                
 
 @storage:                           @primary;
 @class:                             @primary;
-@string:                        mix(@primary, @light-gray, 15%);
-@variable:                      mix(@primary, @tertiary,   25%);
-@storage-subtle:           multiply(@primary, lighten(@string,   15%));
+@string:                        mix(@blend-basis, @primary,     60%);
+@variable:                      mix(@blend-basis, @tertiary,    40%);
+@storage-subtle:           multiply(@blend-basis, lighten(@string,   15%));
 @section:                           @primary-dark;
 
 @instance:                          @secondary;
@@ -34,7 +34,7 @@ Package-specific                                                                
 @interpolation:                     @tertiary;
 @function-constant:       softlight(@tertiary, @primary);
 
-@comment:                           @gray;
+@comment:                           mix(@base, @gray, unit(@config-dim-minor, %));
 @selector:               screen(mix(@primary,    @gray), @secondary), // default
                      desaturate(mix(@primary,    @light-gray,  80%), 20%), // tag
                      desaturate(mix(@secondary,  @light-gray,  80%), 20%), // id

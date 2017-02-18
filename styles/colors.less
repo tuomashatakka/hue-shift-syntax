@@ -18,15 +18,18 @@
 @tertiary-quarter:          hsla(@hue - @shift / 4, @sat, @lum, 1);
 
 
-@foundation:                #1c191f;
+@foundation:                hsla(@hue, (@sat - 0.20)/10, (@lum)/10, 1);
 @background-color:          mix(desaturate(softlight(#21272f, @primary), 20%), @foundation, 25%);
-@background-color:          fade(@foundation, unit(@config-background-level, %));
+@background-color:          saturate(lighten(@foundation - #060606, unit(@config-background-level / 4, %)), unit(@config-background-level / 10, %));
 
 @very-light-gray:           lighten(@background-color, 60%);
 @light-gray:                lighten(@background-color, 40%);
 @gray:                      lighten(@background-color, 20%);
 @dark-gray:                 @background-color;
 @very-dark-gray:            darken(@background-color, 15%);
+
+@blend-basis:               mix(@background-color, @primary + #777, unit(@config-dim-minor, %));
+
 
 @opaque-dark:               mix(@primary, #383838);
 
