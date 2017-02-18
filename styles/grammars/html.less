@@ -1,13 +1,64 @@
-
+@import 'syntax-variables';
 .syntax--js,
 .syntax--jsx,
 .syntax--html {
 
-  .syntax--tag {
+@tag: extract(@selector, 1);
+@key: @secondary;
+@val: darken(@secondary, 5%);
+@text: mix(@tag, @comment, 25%);
 
-    .syntax--brace {
-      color: @variable }
+
+.syntax--basic, &.syntax--basic,
+.syntax--text,  &.syntax--text {
+  color: @text }
+
+.syntax--tag {
+  .variant(dusk, @tag, 4);
+
+  // Tag name
+  &.syntax--name {
+    color: @tag;
+    .text(bold) }
+
+  // Attributes
+  .syntax--attribute-name.syntax--entity {
+    .variant(dark, @key, 4);
+    .text(thin) }
+
+  // Values
+  .syntax--string,
+  .syntax--quoted .syntax--punctuation {
+    .variant(dark, @val, 9) }
+
+  // Id values
+  .syntax--attribute-name ~ .syntax--id {
+    color: @val }
+
+  // Tag delimiters
+  .syntax--brace,
+  .syntax--punctuation {
+    .variant(dusk, @tag, 5);
+    color: inherit;
+    .text(thin) }
+
+
+
+  &.syntax--inline {
+    .syntax--name {
+      .variant(dusk, @tag, 6) }
+    .syntax--definition.syntax--punctuation {
+      .variant(dusk, @tag, 12) }
   }
+}
 
+.syntax--doctype,
+.syntax--punctuation {
+  color: mix(@tag, @comment, 36%);
+}
+
+.syntax--invalid,
+.syntax--illegal {
+  .error }
 
 }

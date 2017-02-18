@@ -26,6 +26,8 @@
     border-bottom: 1px dotted;
     opacity: @opacity }}
 
+.italic() {
+  font-style: italic }
 
 .text-styles() {
 
@@ -34,6 +36,16 @@
 
   &.syntax--italic {
     font-style: italic }}
+
+.text(normal) {
+  font-weight: normal;
+  font-style: none }
+
+.text(thin) { font-weight: 100 }
+.text(light) { font-weight: 300 }
+.text(medium) { font-weight: 500 }
+.text(bold) { font-weight: 700 }
+.text(black) { font-weight: 900 }
 
 
 .status(@base) {
@@ -44,30 +56,48 @@
   &.syntax--deleted {
     color: hue-rotate(@base, 60) }}
 
+.error() {
+  position: relative;
+  border-radius: 2px;
+  color: fade(@text-color-removed, 80%);
+  background-color: fade(@text-color-removed, 20%);
+
+  &::after {
+    position: absolute;
+    display: inline-block;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    height: 1px;
+    content: "";
+    background-color: fade(@text-color-removed, 80%); } }
 
 .variant(shifted, @color, @aberration: 10%) {
   color: desaturate(spin(@color, @shift * @aberration), @aberration/2) }
 
-.variant(dark, @color) {
-  color: darken(@color, 10%) }
+.variant(dark, @color, @strength: 1) {
+  @drkn: unit(@strength * 4 + 4, %);
+  @grscl: unit(@strength * 4, %);
+  color: desaturate(darken(@color, @drkn), @grscl) }
 
 .variant(darker, @color) {
-  color: darken(@color, 20%) }
+  color: desaturate(darken(@color, 20%), 25%) }
 
 .variant(subtle, @color) {
   color: multiply(@color, lighten(@string, 15%)) }
 
-.variant(dusk, @color) {
-  @darken:    0%;
-  @saturate:  15%;
-  color:  saturate(
-          darken(
-          mix(
-            @color,
-            @background-color
-          ),
-          @darken),
-          @saturate) }
+.variant(vivid, @color, @intensity: 5) {
+  color: saturate(multiply(@color, lighten(@string, unit(3 * @intensity, %))), @intensity * 3%) }
+
+.variant(dusk, @color, @strength: 1) {
+  @fade: unit(75 - @strength * 3, %);
+  @darken: unit(@strength * 2 - 2, %);
+  @saturate: unit(16 - @strength, %);
+  color: saturate(darken(mix(
+    @color,
+    @background-color, @fade),
+    @darken),
+    @saturate) }
 
 // .variant(iter, @var, @color) {
 //   & when (@var = normal)  { color: @color }

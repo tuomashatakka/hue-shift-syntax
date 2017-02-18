@@ -7,13 +7,16 @@ Package-specific                                                                
 @primary-dark:                      darken(@primary, 10%);
 @default:                           desaturate(lighten(multiply(@string, @primary), 35%), 2.5%);
 @base:                              @background-color;
-@keyword-control:                   mix(@keyword, @base, 75%);
+@control:                       mix(@string, @base, 75%);
+@operator:                          @control;
+@regex:                             @tertiary-half;
 
 @keyword:                           @primary;
 @keyword-unit:                      @primary;
 @keyword-method:                    @primary;
 @keyword-method:                    @primary;
 @keyword-operator:                  @primary;
+
 @storage:                           @primary;
 @class:                             @primary;
 @string:                        mix(@primary, @light-gray, 15%);
@@ -32,11 +35,11 @@ Package-specific                                                                
 @function-constant:       softlight(@tertiary, @primary);
 
 @comment:                           @gray;
-@selector:               screen(mix(@primary,    @gray, 50%), @secondary), // default
+@selector:               screen(mix(@primary,    @gray), @secondary), // default
                      desaturate(mix(@primary,    @light-gray,  80%), 20%), // tag
                      desaturate(mix(@secondary,  @light-gray,  80%), 20%), // id
                      desaturate(mix(@tertiary,   @light-gray,  80%), 20%), // attr
-                     desaturate(mix(@tertiary,   @light-gray,  80%), 20%); // pseudo
+                     desaturate(mix(@tertiary,   @light-gray,  50%), 20%); // pseudo
 
 // Css properties
 @key:                               mix(desaturate(@tertiary-half, 25%), @base, 67%);
@@ -45,10 +48,10 @@ Package-specific                                                                
 
                                                                                                                                                                                                                           /*
 General colors                                                                                                                                                                                                         */
-@syntax-text-color:                 screen(@string, @primary);
+@syntax-text-color:                 screen(@tertiary, @primary);
 @syntax-cursor-color:               @string;
 @syntax-background-color:           @background-color;
-@syntax-selection-color:            @opaque-dark;
+@syntax-selection-color:            fade(@opaque-dark, 15%);
 
                                                                                                                                                                                                                           /*
 Guide colors                                                                                                                                                                                                           */
