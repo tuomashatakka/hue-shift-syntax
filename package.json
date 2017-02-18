@@ -137,5 +137,8 @@
         "jsx": true
       }
     }
+  },
+  "devDependencies": {
+    "jasmine": "2.5.3"
   }
 }

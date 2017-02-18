@@ -1,8 +1,9 @@
 // @import "ui-variables";
 
 .syntax-preview {
-  @component-padding: 1em;
-  @editor-width: 35%;
+  @component-padding: 0.5em;
+  @editor-width: 40%;
+
   overflow-y: auto;
   position: static;
   display: block;
@@ -11,24 +12,23 @@
 
   > .editor {
     position: absolute;
+    flex-flow: column nowrap;
+    display: flex;
     top: 0;
     bottom: 0;
     right: 0;
-    width: @editor-width }
+    width: @editor-width;
+    overflow: hidden }
 
   > .config {
     margin-right: @editor-width }
 
   // Config sections
-  .config h1 {
-    font-size: 4em;
-  }
-  .inset-panel {
-    .panel-heading {
-      em {
-        font-weight: 100; }
-    }
-  }
+  .config h3 {
+    font-size: 1em;
+    margin: 0 }
+  .config em:empty { display: none }
+  .config em { display: none }
 
   // Input fields
   .control-group {
@@ -37,12 +37,15 @@
     margin: 0 0 @component-padding * 2;
     padding: @component-padding;
 
-    .control-label {}
+    .control-label {
+      h4 { margin: 0 }
+      p { display: none }}
 
     .controls {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
+      padding: 1em 0;
 
       *:not(:last-child) {
         margin: 0 @component-padding * 2 0 0 }}
@@ -50,22 +53,30 @@
     output {
       position: absolute;
       right: 0;
-      top: 50%;
-      transform: translateY(-50%) }
+      top: 0 }
   }
 
   // Text editor mouseover fill
-  > .editor:hover .grammar-select {
-    opacity: 1;
-    transition-duration: .1s }
-
+  // > .editor:hover .grammar-select {
+  //   opacity: 1;
+  //   transition-duration: .05s }
   > .editor .grammar-select {
-    opacity: 0;
-    position: absolute;
-    padding: @component-padding * 2;
+    // opacity: 1;
+    flex-flow: row nowrap;
+    position: relative;
+    display: flex;
+    padding: @component-padding * 2 @component-padding * 2 @component-padding;
     width: 100%;
     z-index: 1001;
-    transition: opacity .5s }
+    transition: opacity .2s;
+
+    h2 {
+      display: inline;
+      flex: 1 0 auto }
+    select {
+      vertical-align: middle;
+      font-size: 2.4em;
+      flex: 0 1 auto }}
 
   atom-text-editor.editor {
     height: 100% }
@@ -83,6 +94,6 @@
 
   .grammar-select:hover + atom-text-editor.editor::before,
   atom-text-editor.editor:hover::before {
-    background: fade(@base, 50%);
-    transition-duration: .1s }
+    background: fade(@base, 75%);
+    transition-duration: .05s }
 }
