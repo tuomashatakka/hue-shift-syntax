@@ -1,8 +1,10 @@
 // @import "ui-variables";
 
 .syntax-preview {
-  @component-padding: 0.5em;
+  @component-padding: 0.75rem;
   @editor-width: 40%;
+  @header-height: 4rem;
+  @grammar-select-height: 6rem;
 
   overflow-y: auto;
   position: static;
@@ -14,7 +16,7 @@
     position: absolute;
     flex-flow: column nowrap;
     display: flex;
-    top: 0;
+    top: @header-height;
     bottom: 0;
     right: 0;
     width: @editor-width;
@@ -22,6 +24,16 @@
 
   > .config {
     margin-right: @editor-width }
+
+  > .main-header {
+    height: @header-height;
+    box-sizing: border-box;
+    padding: @component-padding;
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      line-height: @header-height - @component-padding * 2 }}
 
   // Config sections
   .config h3 {
@@ -32,7 +44,7 @@
 
   // Input fields
   .control-group {
-    display: block;
+    display: flex;
     position: relative;
     margin: 0 0 @component-padding * 2;
     padding: @component-padding;
@@ -42,18 +54,28 @@
       p { display: none }}
 
     .controls {
+      flex: 1 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1em 0;
+      padding: 0 0 0 @component-padding / 3 * 2;
+      align-items: center;
 
       *:not(:last-child) {
-        margin: 0 @component-padding * 2 0 0 }}
+        margin: 0 @component-padding 0 0 }}
 
     output {
-      position: absolute;
-      right: 0;
-      top: 0 }
+      box-sizing: content-box;
+      vertical-align: middle;
+      text-align: center;
+      padding: 0 @component-padding / 3 * 2;
+      margin: 0 0 0 @component-padding;
+      min-width: 0;
+      width: auto;
+      height: 1.6em;
+      line-height: 1.6em;
+      transition: background-color 150ms;
+    }
   }
 
   // Text editor mouseover fill
@@ -63,16 +85,20 @@
   > .editor .grammar-select {
     // opacity: 1;
     flex-flow: row nowrap;
+    align-items: center;
     position: relative;
     display: flex;
-    padding: @component-padding * 2 @component-padding * 2 @component-padding;
+    height: @grammar-select-height;
+    padding: 0 @component-padding * 2 @component-padding * 2;
     width: 100%;
-    z-index: 1001;
+    z-index: 10;
     transition: opacity .2s;
+    box-sizing: border-box;
 
     h2 {
       display: inline;
       flex: 1 0 auto }
+
     select {
       vertical-align: middle;
       font-size: 2.4em;
@@ -81,19 +107,19 @@
   atom-text-editor.editor {
     height: 100% }
 
-  atom-text-editor.editor::before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-    transition: background .5s }
-
-  .grammar-select:hover + atom-text-editor.editor::before,
-  atom-text-editor.editor:hover::before {
-    background: fade(@base, 75%);
-    transition-duration: .05s }
+  // atom-text-editor.editor::before {
+  //   content: "";
+  //   position: absolute;
+  //   display: block;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   z-index: 1000;
+  //   transition: background .5s }
+  //
+  // .grammar-select:hover + atom-text-editor.editor::before,
+  // atom-text-editor.editor:hover::before {
+  //   background: fade(@base, 75%);
+  //   transition-duration: .05s }
 }
