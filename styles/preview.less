@@ -41,16 +41,38 @@
     margin: 0 }
   .config em:empty { display: none }
   .config em { display: none }
+  .config .section { margin-bottom: @component-padding }
+
+  .colors-section {
+    .color {
+      --size: 2em;
+      margin: 0 2px 0 0;
+      &:last-child { margin: 0 }}
+  }
+
+  .colors-section main {
+     display: flex;
+     justify-content: center;
+     padding: 0 0 @component-padding;
+     .color.circle { --size: 4em }}
+
+  .color-variants-section {
+     display: flex;
+     justify-content: center;
+     padding: 0 0 @component-padding }
 
   // Input fields
   .control-group {
     display: flex;
+    align-items: center;
     position: relative;
-    margin: 0 0 @component-padding * 2;
-    padding: @component-padding;
+    margin: 0;
+    padding: @component-padding @component-padding;
 
     .control-label {
-      h4 { margin: 0 }
+      h4 {
+        margin: 0;
+        font-size: 1em }
       p { display: none }}
 
     .controls {
@@ -74,8 +96,13 @@
       width: auto;
       height: 1.6em;
       line-height: 1.6em;
-      transition: background-color 150ms;
-    }
+      transition:
+        background-color 1500ms,
+        color 750ms }
+    output.badge-info {
+      transition-duration: 300ms }
+    output.badge-success {
+      transition-duration: 150ms }
   }
 
   // Text editor mouseover fill

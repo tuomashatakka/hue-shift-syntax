@@ -1,0 +1,55 @@
+
+@import "syntax-variables";
+
+.color {
+  --size: 4em;
+  color: var(--color);
+
+  &.inverse {
+    color: inherit;
+    background-color: var(--color) }
+  &.circle {
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50% }
+
+  &.primary {
+    --color: @primary }
+  &.secondary {
+    --color: @secondary }
+  &.tertiary {
+    --color: @tertiary }
+  &.backface {
+    --color: @background-color }
+
+  &.secondary-half {
+    --color: @secondary-half }
+  &.secondary-quarter {
+    --color: @secondary-quarter }
+
+  &.tertiary-half {
+    --color: @tertiary-half }
+  &.tertiary-quarter {
+    --color: @tertiary-quarter }
+
+  &.primary.variant { .dimmed(@primary, 1) }
+  &.primary.variant.light { .vivid(@primary, 1) }
+  &.primary.variant.lighter { .vivid(@primary, 2) }
+  &.primary.variant.dark { .dimmed(@primary, 2) }
+  &.primary.variant.darker { .dimmed(@primary, 3) }
+  &.primary.variant.sub { .dimmed(@primary, 4) }
+
+  &.secondary.variant { .dimmed(@secondary, 1) }
+  &.secondary.variant.light { .vivid(@secondary, 1) }
+  &.secondary.variant.lighter { .vivid(@secondary, 2) }
+  &.secondary.variant.dark { .dimmed(@secondary, 2) }
+  &.secondary.variant.darker { .dimmed(@secondary, 3) }
+  &.secondary.variant.sub { .dimmed(@secondary, 4) }
+
+  &.tertiary.variant { .dimmed(@tertiary, 1) }
+  &.tertiary.variant.light { .vivid(@tertiary, 1) }
+  &.tertiary.variant.lighter { .vivid(@tertiary, 2) }
+  &.tertiary.variant.dark { .dimmed(@tertiary, 2) }
+  &.tertiary.variant.darker { .dimmed(@tertiary, 3) }
+  &.tertiary.variant.sub { .dimmed(@tertiary, 4) }
+}
