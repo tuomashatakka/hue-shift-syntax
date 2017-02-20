@@ -1,9 +1,12 @@
 
 atom-text-editor[mini],
 atom-text-editor.mini {
-  color: inverse(@syntax-background-color);
-  &.is-focused * {
+  color: fade(@dark-gray, 75%);
+  color: var(--text-color);
+  &.is-focused,
+  &.is-focused {
     color: fade(@very-dark-gray, 75%);
+    color: var(--text-color);
   }
 }
 

@@ -4,41 +4,47 @@
 .syntax--html {
 
 @tag: extract(@selector, 1);
+@tag-name: extract(@selector, 2);
+@attribute: extract(@selector, 3);
 @key: @secondary;
-@val: darken(@secondary, 5%);
+@value: @secondary;
 @text: mix(@tag, @comment, 25%);
 
+* {
+  color: var(--color) }
 
 .syntax--basic, &.syntax--basic,
 .syntax--text,  &.syntax--text {
   color: @text }
 
 .syntax--tag {
-  .variant(dusk, @tag, 4);
+  --color: @tag;
 
   // Tag name
   &.syntax--name {
-    color: @tag;
+    color: @tag-name;
     .text(bold) }
 
   // Attributes
   .syntax--attribute-name.syntax--entity {
-    .variant(dark, @key, 4);
+    --color: @attribute;
+    color: var(--color);
     .text(thin) }
 
   // Values
   .syntax--string,
   .syntax--quoted .syntax--punctuation {
-    .variant(dark, @val, 9) }
+    .muted(@value)
+    }
 
   // Id values
   .syntax--attribute-name ~ .syntax--id {
-    color: @val }
+    color: @value }
 
   // Tag delimiters
   .syntax--brace,
   .syntax--punctuation {
-    .variant(dusk, @tag, 5);
+    .muted(@tag, 1);
     color: inherit;
     .text(thin) }
 
@@ -46,9 +52,9 @@
 
   &.syntax--inline {
     .syntax--name {
-      .variant(dusk, @tag, 6) }
+      color: var(--color) }
     .syntax--definition.syntax--punctuation {
-      .variant(dusk, @tag, 12) }
+      color: var(--color) }
   }
 }
 

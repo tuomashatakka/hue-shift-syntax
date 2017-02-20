@@ -61,8 +61,8 @@ Guide colors                                                                    
 
                                                                                                                                                                                                                           /*
 Search markers                                                                                                                                                                                                         */
-@syntax-result-marker-color:          @light-gray;
-@syntax-result-marker-color-selected: white;
+@syntax-result-marker-color:          fade(@light-gray, 40%);
+@syntax-result-marker-color-selected: fade(white, 60%);
 
                                                                                                                                                                                                                           /*
 Gutter decor                                                                                                                                                                                                           */
@@ -78,11 +78,8 @@ Diff                                                                            
 // @syntax-color-modified: @text-color-modified;
 // @syntax-color-removed: @text-color-removed;
 // @import "ui-variables";
-@text-color-success:      mix(@string, rgb(56, 252, 175));
-@text-color-modified:     mix(@string, rgb(227, 196, 121));
-@text-color-renamed:      mix(@string, rgb(217, 163, 113));
-@text-color-removed:      mix(@string, rgb(252, 81, 132));
-@syntax-color-added:      @text-color-success;
-@syntax-color-modified:   @text-color-modified;
-@syntax-color-renamed:    @text-color-renamed;
-@syntax-color-removed:    @text-color-removed;
+@syntax-color-success:      mix(@string, rgb(56, 252, 175));
+@syntax-color-modified:     mix(@string, rgb(227, 196, 121));
+@syntax-color-renamed:      mix(@string, rgb(217, 163, 113));
+@syntax-color-removed:      mix(@string, rgb(252, 81, 132));
+@syntax-color-added:            @syntax-color-success;

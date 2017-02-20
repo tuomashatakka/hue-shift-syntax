@@ -59,8 +59,8 @@
 .error() {
   position: relative;
   border-radius: 2px;
-  color: fade(@text-color-removed, 80%);
-  background-color: fade(@text-color-removed, 20%);
+  color: fade(@syntax-color-removed, 80%);
+  background-color: fade(@syntax-color-removed, 20%);
 
   &::after {
     position: absolute;
@@ -70,7 +70,7 @@
     right: -2px;
     height: 1px;
     content: "";
-    background-color: fade(@text-color-removed, 80%); } }
+    background-color: fade(@syntax-color-removed, 80%); } }
 
 .variant(shifted, @color, @aberration: 10%) {
   color: desaturate(spin(@color, @shift * @aberration), @aberration/2) }

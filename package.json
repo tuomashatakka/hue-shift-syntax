@@ -2,6 +2,8 @@
   "name": "hue-shift-syntax",
   "theme": "syntax",
   "main": "./lib/index.js",
+  "keymaps": "./keymaps/hue-shift-syntax.cson",
+  "menus": "./menus/hue-shift-syntax.cson",
   "version": "0.2.0",
   "description": "Configurable syntax engine/framework with a vivid array of configuration",
   "keywords": [
@@ -69,16 +71,24 @@
           "maximum": 165,
           "default": 60
         },
+        "drift": {
+          "title": "Drifting",
+          "description": "Variance in discrete colors' luminance",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 30
+        },
         "background-level": {
           "title": "Background brightness",
-          "description": "Brightness level for the syntax background color",
+          "description": "Brightness level for the editor's background color",
           "type": "number",
           "minimum": 1,
           "maximum": 100,
           "default": 30
         },
         "dim:minor": {
-          "title": "Dim minor",
+          "title": "Minor color muting",
           "description": "Blend minor texts with background to get a cleaner outlook (comments, strings, separators, gt & lt symbols in html and so on..)",
           "type": "number",
           "minimum": 10,

@@ -1,0 +1,8 @@
+"menu": [
+  {
+    "label": "View"
+    "submenu": [
+      {
+        "label": "Open syntax preview",
+        "command": "hue-shift:open-preview"
+      }
