@@ -4,7 +4,7 @@
   "main": "./lib/index.js",
   "keymaps": "./keymaps/hue-shift-syntax.cson",
   "menus": "./menus/hue-shift-syntax.cson",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Configurable syntax engine/framework with a vivid array of configuration",
   "keywords": [
     "syntax",
