@@ -13,11 +13,12 @@
 @primary:                   hsla(@hue, @sat, @lum, 1);
 @secondary:                 hsla(@hue + @shift, @sat, @lum, 1);
 @tertiary:                  hsla(@hue - @shift, @sat, @lum, 1);
+@complement:                hsla(@hue + 180deg, @sat, @lum, 1);
+
 @secondary-half:            hsla(@hue + @shift / 2, @sat, @lum, 1);
 @tertiary-half:             hsla(@hue - @shift / 2, @sat, @lum, 1);
 @secondary-quarter:         hsla(@hue + @shift / 4, @sat, @lum, 1);
 @tertiary-quarter:          hsla(@hue - @shift / 4, @sat, @lum, 1);
-
 
 @foundation:                hsla(@hue, (@sat - 0.40)/10, (@lum)/10, 1);
 @background-color:          mix(desaturate(softlight(#21272f, @primary), 20%), @foundation, 25%);
@@ -31,13 +32,4 @@
 
 @blend-basis:               mix(@background-color, @primary + #777, unit(@config-dim-minor, %));
 
-
 @opaque-dark:               mix(@primary, #383838);
-
-@cyan:          @primary;
-@blue:          @primary;
-@purple:        @secondary;
-@red:           @secondary;
-@green:         @tertiary;
-@orange:        @tertiary;
-@light-orange:  @tertiary;

@@ -150,3 +150,21 @@
   //   background: fade(@base, 75%);
   //   transition-duration: .05s }
 }
+
+
+.cursor-scope {
+  position: fixed;
+  min-width: 6em;
+  z-index: 5000;
+  flex: 1 0 6em;
+  right: 0;
+  left: 0;
+
+  .full-scope {
+    background: @syntax-background-color;
+    line-height: inherit;
+    position: absolute;
+    font-size: 1.5em;
+    padding: 0 1em;
+    width: 100%;
+    bottom: 0 }}

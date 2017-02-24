@@ -1,5 +1,6 @@
 
 @import "syntax-variables";
+@import "colors";
 
 .color {
   --size: 4em;
@@ -8,6 +9,7 @@
   &.inverse {
     color: inherit;
     background-color: var(--color) }
+
   &.circle {
     width: var(--size);
     height: var(--size);
@@ -56,4 +58,9 @@
   &.tertiary.variant.dark { .dimmed(@tertiary, 2) }
   &.tertiary.variant.darker { .dimmed(@tertiary, 3) }
   &.tertiary.variant.sub { .dimmed(@tertiary, 4) }
+
+  // &.n { .primary }
+  // &.e { .secondary }
+  // &.w { .tertiary }
+  // &.s { .complement }
 }
