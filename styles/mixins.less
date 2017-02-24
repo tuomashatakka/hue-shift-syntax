@@ -4,19 +4,19 @@
 
   @cls: ~".syntax--@{name}";
 
-  @{cls} { color: @color }}
+  @{cls} { --color: @color }}
 
 .set(@scope, @color) {
 
   @cls: ~".syntax--@{scope}";
 
-  &@{cls} { color: @color }}
+  &@{cls} { --color: @color }}
 
 
 .underline(@opacity) {
   display: inline-block;
   position: relative;
-
+  text-decoration: none;
   &::before {
     content: "";
     position: absolute;
@@ -26,16 +26,11 @@
     border-bottom: 1px dotted;
     opacity: @opacity }}
 
-.italic() {
-  font-style: italic }
+.italic() { font-style: italic }
 
 .text-styles() {
-
-  &.syntax--bold {
-    font-weight: bold }
-
-  &.syntax--italic {
-    font-style: italic }}
+  &.syntax--bold { font-weight: bold }
+  &.syntax--italic { font-style: italic }}
 
 .text(normal) {
   font-weight: normal;
@@ -51,10 +46,10 @@
 .status(@base) {
 
   &.syntax--changed {
-    color: color-dodge(@base, #fe8) }
+    --color: color-dodge(@base, #fe8) }
 
   &.syntax--deleted {
-    color: hue-rotate(@base, 60) }}
+    --color: hue-rotate(@base, 60) }}
 
 .error() {
   position: relative;
@@ -73,13 +68,13 @@
     background-color: fade(@syntax-color-removed, 80%); } }
 
 .variant(shifted, @color, @aberration: 10%) {
-  color: desaturate(spin(@color, @shift * @aberration), @aberration/2) }
+  --color: desaturate(spin(@color, @shift * @aberration), @aberration/2) }
 
 .variant(dark, @color, @strength: 1) {
   @drkn: unit(@strength * 4 + 4, %);
   @grscl: unit(@strength * 4, %);
   --color: desaturate(darken(@color, @drkn), @grscl);
-  color: desaturate(darken(@color, @drkn), @grscl) }
+  --color: desaturate(darken(@color, @drkn), @grscl) }
 
 .muted(@col, @f: 1) {
   @mix: unit((@f + 1) * 12, %);
@@ -100,28 +95,20 @@
   --color: saturate(multiply(@col, @mult), @sat) }
 
 .variant(darker, @color) {
-  color: desaturate(darken(@color, 20%), 25%) }
+  --color: desaturate(darken(@color, 20%), 25%) }
 
 .variant(subtle, @color) {
-  color: multiply(@color, lighten(@string, 15%)) }
+  --color: multiply(@color, lighten(@string, 15%)) }
 
 .variant(vivid, @color, @intensity: 5) {
-  color: saturate(multiply(@color, lighten(@string, unit(3 * @intensity, %))), @intensity * 3%) }
+  --color: saturate(multiply(@color, lighten(@string, unit(3 * @intensity, %))), @intensity * 3%) }
 
 .variant(dusk, @color, @strength: 1) {
   @fade: unit(75 - @strength * 3, %);
   @darken: unit(@strength * 2 - 2, %);
   @saturate: unit(16 - @strength, %);
-  color: saturate(darken(mix(
+  --color: saturate(darken(mix(
     @color,
     @background-color, @fade),
     @darken),
     @saturate) }
-
-// .variant(iter, @var, @color) {
-//   & when (@var = normal)  { color: @color }
-//   & when (@var = alternate) { color: darken(@color, 15%) }
-//   & when (@var = dark)    { color: darken(@color, 15%) }
-//   & when (@var = darker)  { color: desaturate(darken(@color, 25%), 20%) }
-//   & when (@var = sub)     { color: desaturate(darken(@color, 30%), 40%) }
-// }

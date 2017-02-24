@@ -1,5 +1,6 @@
 
 @import "colors";
+@import "ui-variables";
 
 
                                                                                                                                                                                                                           /*
@@ -8,7 +9,7 @@ Package-specific                                                                
 @default:                           desaturate(lighten(multiply(@string, @primary), 35%), 2.5%);
 @base:                              @background-color;
 @control:                       mix(@string, @base, 75%);
-@operator:                       mix(@blend-basis, @control, 25%);
+@operator:                      mix(@blend-basis, @control, 25%);
 @regex:                             @tertiary-half;
 
 @keyword:                           @primary;
@@ -50,7 +51,7 @@ Package-specific                                                                
 General colors                                                                                                                                                                                                         */
 @syntax-text-color:                 screen(@tertiary, @primary);
 @syntax-cursor-color:               @string;
-@syntax-background-color:           @background-color;
+@syntax-background-color:           mix(@background-color, @app-background-color, 60%);
 @syntax-selection-color:            fade(@opaque-dark, 15%);
 
                                                                                                                                                                                                                           /*

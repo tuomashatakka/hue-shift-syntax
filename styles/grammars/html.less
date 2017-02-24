@@ -1,4 +1,5 @@
 @import 'syntax-variables';
+
 .syntax--js,
 .syntax--jsx,
 .syntax--html {
@@ -10,61 +11,26 @@
 @value: @secondary;
 @text: mix(@tag, @comment, 25%);
 
-* {
-  color: var(--color) }
-
 .syntax--basic, &.syntax--basic,
-.syntax--text,  &.syntax--text {
-  color: @text }
-
+.syntax--text,  &.syntax--text { .text }
 .syntax--tag {
   --color: @tag;
-
   // Tag name
-  &.syntax--name {
-    color: @tag-name;
-    .text(bold) }
-
+  &.syntax--name { --color: @tag-name; .text(bold) }
   // Attributes
-  .syntax--attribute-name.syntax--entity {
-    --color: @attribute;
-    color: var(--color);
-    .text(thin) }
-
+  .syntax--attribute-name.syntax--entity { --color: @attribute; .text(thin) }
   // Values
   .syntax--string,
-  .syntax--quoted .syntax--punctuation {
-    .muted(@value)
-    }
-
+  .syntax--quoted .syntax--punctuation { .muted(@value) }
   // Id values
-  .syntax--attribute-name ~ .syntax--id {
-    color: @value }
-
+  .syntax--attribute-name ~ .syntax--id { --color: @value }
   // Tag delimiters
   .syntax--brace,
-  .syntax--punctuation {
-    .muted(@tag, 1);
-    color: inherit;
-    .text(thin) }
-
-
+  .syntax--punctuation { --color: inherit; .muted(@tag, 1); .text(thin) }
 
   &.syntax--inline {
-    .syntax--name {
-      color: var(--color) }
-    .syntax--definition.syntax--punctuation {
-      color: var(--color) }
-  }
-}
+    .syntax--name { }
+    .syntax--definition.syntax--punctuation { }}}
 
-.syntax--doctype,
-.syntax--punctuation {
-  color: mix(@tag, @comment, 36%);
-}
-
-.syntax--invalid,
-.syntax--illegal {
-  .error }
-
+.syntax--doctype { .text(bold) }
 }

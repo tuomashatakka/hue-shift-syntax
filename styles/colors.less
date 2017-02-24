@@ -8,6 +8,7 @@
 @sat:                       @config-saturation / 100;
 @lum:                       @config-luminance / 100;
 @shift:                     @config-aberration;
+@drift:                     unit(@config-drift, deg);
 
 @primary:                   hsla(@hue, @sat, @lum, 1);
 @secondary:                 hsla(@hue + @shift, @sat, @lum, 1);
@@ -18,9 +19,9 @@
 @tertiary-quarter:          hsla(@hue - @shift / 4, @sat, @lum, 1);
 
 
-@foundation:                hsla(@hue, (@sat - 0.20)/10, (@lum)/10, 1);
+@foundation:                hsla(@hue, (@sat - 0.40)/10, (@lum)/10, 1);
 @background-color:          mix(desaturate(softlight(#21272f, @primary), 20%), @foundation, 25%);
-@background-color:          saturate(lighten(@foundation - #060606, unit(@config-background-level / 4, %)), unit(@config-background-level / 10, %));
+@background-color:          saturate(lighten(@foundation - #060606, unit(@config-background-level / 4, %)), unit(@config-background-level / 20, %));
 
 @very-light-gray:           lighten(@background-color, 60%);
 @light-gray:                lighten(@background-color, 40%);

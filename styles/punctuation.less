@@ -1,0 +1,29 @@
+
+
+.syntax--terminator {}
+
+// Punctuation
+// control characters
+.syntax--punctuation.syntax--definition { .text-styles;
+  &.syntax--comment { --color: @comment }
+  &.syntax--heading, &.syntax--identity { --color: @syntax-text-color }
+  &.syntax--section.syntax--embedded { --color: @section }}
+
+.syntax--operator {
+  &.syntax--ternary { .text(bold); .delim }
+}
+
+.syntax--meta { --color: inherit;
+  &.syntax--brace { .text(black); .delim }
+  &.syntax--punctuation { .delim }
+  &.syntax--link { --color: @tertiary }
+  &.syntax--require { --color: @tertiary }
+  &.syntax--selector { --color: @comment }
+  &.syntax--separator { --color: @syntax-text-color; .delim; background-color: @gray }
+  &.syntax--property-group,
+  &.syntax--property-value {
+   .syntax--support.syntax--constant.syntax--property-value { --color: @function-constant }}}
+
+
+ .syntax--delimiter { .text(bold); .delim }
+ .syntax--punctuation { .text(bold) }

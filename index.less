@@ -1,384 +1,72 @@
 @import (reference) "styles/syntax-variables";
 @import (reference) "styles/mixins";
+
+@import "styles/base";
 @import "styles/editor";
 @import "styles/preview";
-@import "styles/base";
+@import "styles/decorations";
+
+@import "styles/punctuation";
+@import "styles/text";
+@import "styles/storage";
+@import "styles/entities";
+@import "styles/grammars/markdown";
+@import "styles/grammars/html";
+@import "styles/grammars/css";
+
+@import "styles/package/linter";
 // @import 'fixtures/default';
 
 
-.syntax--none {
-  color: @comment }
+.comment() {
+  --color: @comment }
+.text() {
+  --color: @instance }
+.string() {
+  --color: @string;
+  &.vivid { .variant(vivid, @string) }}
+.regex() {
+  --color: @regex }
 
-.syntax--invalid.syntax--illegal {
-  color: @syntax-color-removed }
+.error() {
+  --color: @syntax-color-removed }
 
+.keyword() { .color.tertiary.half }
+.storage() { .color.tertiary.half }
+.storage.subtle { .color.tertiary.quarter }
 
-.syntax--text,
-.syntax--source {
-  color: @instance;
+.class() {
+  .color.primary }
+.variable() {
+  .color.secondary }
 
-// Text
-// strings, comments & regexp
-.syntax--comment {
-  color: @comment }
-
-.syntax--string {
-  color: @string;
-
-  .syntax--punctuation {
-    color: inherit } }
-
-.syntax-string.syntax--other.syntax--link {
-  color: lighten(@string, 15%) }
-
-.syntax--terminator {
-  color: inherit }
-
-> .syntax--punctuation.syntax--terminator {
-  color: @string }
-
-.syntax--regexp {
-  .variant(dusk, @regex, 6);
-
-  .syntax--punctuation {
-    .variant(dusk, @regex, 6)}
-
-  .syntax--constant {
-    .variant(dusk, @regex, 6)}
-
-  .syntax--group {
-    .variant(vivid, @primary, 20);
-
-    .syntax--definition.syntax--punctuation {
-      .variant(vivid, mix(@regex, @string), 40);
-      .text(black) }}
-
-  .syntax--set + .syntax--quantifier,
-  .syntax--group + .syntax--quantifier {
-      .variant(vivid, mix(@regex, @string), 40) }
-
-  .syntax--set {
-    .variant(vivid, @regex, 20);
-
-    .syntax--definition.syntax--punctuation {
-      color: inherit }
-
-    .syntax--character {
-      .variant(vivid, @regex, 40) }}}
-
-.syntax-regexp .syntax--source.syntax--ruby.syntax--embedded {
-  color: screen(@primary, @secondary) }
-
-.syntax--storage {
-  color: @storage;
-
-  .set(type,   @storage-subtle) ;
-  .set(entity, @storage-subtle) ;
+.definition() {
+  .color.tertiary;
+  &.pre { .color.tertiary.variant.darker } // [export default] functiom fname args
+  &.keyword { .color.tertiary.variant.dark } // [function] fname args
+  &.name { .color.tertiary.variant.light } // function [fname] args
+  &.arguments { .color.tertiary.variant.dark } // function fname [args]
+  &.call { .color.tertiary.quarter } // [fname](args)
+  &.call.arguments { .color.tertiary.half } // fname[(args)]
 }
 
-
-// Keywords and constants
-.syntax--keyword {
-  color: @operator;
-
-  // import statements
-  &.syntax--control {
-    color: @control }
-
-  &.syntax--control ~ .syntax--curly {
-    color: fade(@control, 40%) }
-
-  &.syntax--other.syntax--special-method {
-    color: @function }
-
-  &.syntax--other.syntax--unit {
-    color: @instance }}
-
-
-.syntax--constant {
-  color: @keyword;
-
-  &.syntax--numeric {
-    color: @keyword }
-
-  &.syntax--character.syntax--escape {
-    color: @string }
-
-  &.syntax--other.syntax--color {
-    color: @control }
-
-  &.syntax--other.syntax--symbol {
-    color: @control }}
-
-
-// Entities
-// classes, variables, functions and methods
-.syntax--import {
-  color: @string;
-
-  + .syntax--terminator,
-  .syntax--delimiter,
-  .syntax--punctuation {
-    color: @string }
-
-  .syntax--module {
-    color: @class }
-}
-
-.syntax--variable {
-  color: @variable;
-
-  &.syntax--variable.syntax--interpolation {
-    color: @interpolation }
-
-  &.syntax--module {
-    color: @class }
-}
-
-
-
-.syntax--class ,
-.syntax--function {
-
-  .syntax--type {
-    color: @keyword }
-
-  .syntax--name {
-    .underline(0.35);
-    color: @function;
-    text-decoration: none }
-
-  .syntax--modifier {
-    .variant(dark, @function, 4) }
-
-  .syntax--entity {
-    .underline(0.35);
-    .variant(dark, @function, 7) }
-}
-
-
-.syntax--object {
-  color: @variable }
-
-.syntax--object.syntax--variable {
-  color: @instance }
-
-.syntax--object.syntax--variable ~.syntax--object.syntax--variable {
-  color: @variable }
-
-
-.syntax--export,
-.syntax--function,
-.syntax--class {
-  color: @function;
-
-  &.syntax--name.syntax--type {
-    .underline(0.35);
-    color: @variable;
-    text-decoration: none }
-
-  &.syntax--id,
-  &.syntax--name.syntax--section {
-    color: @section }
-
-  // .syntax--tag,
-  // .syntax--type,
-  // .syntax--storage,
-  // .syntax--keyword,   // extends
-  // .syntax--modifier {  // extends
-  //   color: inherit }
-
-  .syntax--parameters {
-    @arg: @function;
-    .variant(dark, @arg, 5);
-
-    .syntax--punctuation {
-      color: inherit
-    }
-    .syntax--meta,
-    > .syntax--punctuation,
-    .syntax--operator,
-    .syntax--delimiter {
-      color: inherit;
-      .text(black)}
-
-    // .syntax--string,
-    // .syntax--variable,
-    // .syntax--array,
-    .syntax--parameter {
-      color: inherit;
-      }}}
-
-.syntax--export {
-
-  > .syntax--keyword {
-    .variant(dark, @class, 8) }
-
-  > .syntax--variable {
-    .variant(dark, @class, 4) }
-}
-
-
-.syntax--definition.syntax--function.syntax--curly,
-.syntax--meta.syntax--function ~ .syntax--definition.syntax--curly {
-  .variant(dusk, @function, 5);
-}
-
-
-.syntax--variable,
-.syntax--export,
-.syntax--entity,
-.syntax--function,
-.syntax--class {
-
-  + .syntax--delimiter {
-    color: @variable }
-
-  + .syntax--method-call {
-    color: @default;
-
-    > .syntax--arguments {
-      color: @variable;
-      * {
-        color: mix(@variable, @base, 25%);
-        } }
-
-    > .syntax--brace,
-    > .syntax--brace::before {
-      .variant(dusk, @variable);
-    }
-    > .syntax--delimiter,
-    > .syntax--function {
-      .variant(subtle, @variable) }
-  }
-}
-
-// CSS selectors
-.syntax--property-list .syntax--attribute-selector,
-.syntax--property-list .syntax--attribute-name,
-.syntax--property-list .syntax--name {
-  color: extract(@selector, 1);
-
-  &.syntax--entity {
-    color: extract(@selector, 1) }
-
-  &.syntax--tag {
-    color: extract(@selector, 2) }
-
-  &.syntax--id {
-    color: extract(@selector, 3) }
-
-  &.syntax--attribute-selector,
-  &.syntax--attribute {
-    color: extract(@selector, 4) }
-
-  &.syntax--pseudo-class,
-  &.syntax--pseudo-element {
-    color: extract(@selector, 5) }
-
-  .syntax--string,
-  .syntax--punctuation {
-    -webkit-filter: saturate(50%);
-    color: inherit }
-  .syntax--string {
-    opacity: 1 }
-  .syntax--punctuation {
-    opacity: 0.5 }}
-
-
-// CSS Selectors
-.syntax--property-list {
-
-  .syntax--property-name.syntax--type {
-    color: @support-property-name;
-    color: @key }
-
-  .syntax--property-value {
-    color: @value;
-
-    .syntax--constant,
-    .syntax--unit {
-      .variant(darker, @value) }}
-}
-
-.syntax--support.syntax--any-method {
-    color: @function }
-
-// Punctuation
-// control characters
-.syntax--punctuation.syntax--definition {
-  .text-styles;
-
-  &.syntax--comment {
-    color: @comment }
-
-  &.syntax--heading,
-  &.syntax--identity {
-    color: @syntax-text-color }
-
-  &.syntax--section.syntax--embedded {
-    color: @section }}
-
-
-.syntax--meta {
-  color: @punctuation;
-
-  &.syntax--link {
-    color: @tertiary }
-
-  &.syntax--require {
-    color: @tertiary }
-
-  &.syntax--selector {
-    color: @comment }
-
-  .syntax--brace {
-    color:fade(@function, 50%) }
-
-  .syntax--punctuation {
-    color: fade(@punctuation, 50%) }
-
-  &.syntax--separator {
-    background-color: @gray;
-    color: @syntax-text-color }
-
-  &.syntax--property-group,
-  &.syntax--property-value {
-   .syntax--support.syntax--constant.syntax--property-value {
-     color: @function-constant }}}
-
-
-.syntax--markup {
-  .text-styles;
-  .status(@tertiary);
-
-  &.syntax--heading .syntax--punctuation.syntax--definition.syntax--heading {
-    color: @blue }
-
-  &.syntax--inserted {
-    color: @syntax-color-added }
-
-  &.syntax--list {
-    color: @red }
-
-  &.syntax--quote {
-    color: @comment }
-
-  &.syntax--raw.syntax--inline {
-    color: @green }}
-
-
-.syntax--source.syntax--gfm .syntax--markup {
-  -webkit-font-smoothing: auto;
-
-  &.syntax--heading {
-    color: @green }}
-
-}
-
-@import "styles/grammars/html";
-@import "styles/decorations";
+.entity() {
+  .color.tertiary.variant.lighter }
+.instance() {
+  .color.primary.variant.light }
+
+// Delimiters & punctuation
+.delim() {
+  --color: inherit;
+  opacity: 0.5; }
+
+.apply(@clas, @color) {
+  @selector: ~".syntax--@{clas}";
+  @{selector} {     --color: @color }}
+
+// Color application
+[class*='syntax--'] {
+  color: var(--color) }
 
 // Mini editor
-atom-text-editor[mini] .scroll-view {
-  padding-left: 1px }
+atom-text-editor[mini] .scroll-view { padding-left: 1px }

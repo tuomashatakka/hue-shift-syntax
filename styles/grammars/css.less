@@ -1,0 +1,45 @@
+
+// CSS selectors
+// Class
+.syntax--css {
+  .set(class, extract(@selector, 1));
+  .set(tag, extract(@selector, 2));
+  .set(id, extract(@selector, 3));
+  .set(attribute, extract(@selector, 4));
+  .set(attribute-selector, extract(@selector, 4));
+  .set(pseudo-class, extract(@selector, 5));
+  .set(pseudo-element, extract(@selector, 5));
+  &.syntax--id {
+    .color.primary.variant.lighter }
+
+  .syntax--string,
+  .syntax--punctuation {
+    -webkit-filter: saturate(50%);
+    --color: inherit }
+
+  .syntax--string {
+    opacity: 1 }
+
+  .syntax--punctuation {
+    opacity: 0.5 }
+}
+
+
+// CSS Selectors
+.syntax--property-list {
+
+  .syntax--property-name.syntax--type {
+    &, & + .syntax--punctuation { --color: @key }}
+
+  .syntax--property-value {
+    --color: @value;
+
+    .syntax--constant,
+    .syntax--unit {
+      .variant(darker, @value) }}
+}
+
+// Drift
+  .syntax--attribute-name { .color.secondary; .text(light) }
+  .syntax--attribute-name ~ .syntax--attribute-name { -webkit-filter: hue-rotate(@drift / 2) }
+  .syntax--attribute-name ~ .syntax--attribute-name ~ .syntax--attribute-name { -webkit-filter: hue-rotate(-@drift) }

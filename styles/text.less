@@ -1,0 +1,35 @@
+
+
+// Text
+// strings, comments & regexp
+.syntax--none,
+.syntax--comment { .comment }
+.syntax--invalid,
+.syntax--illegal { .error }
+
+.syntax--string {
+  .string }
+.syntax--string.syntax--link {
+  .string.vivid }
+.syntax--text {
+  .text;
+  > .syntax--punctuation.syntax--terminator {
+    .string }
+}
+
+.syntax--regexp {
+  .regex;
+  .syntax--punctuation { .variant(dusk, @regex, 6)}
+  .syntax--constant { .variant(dusk, @regex, 6)}
+  .syntax--group { .variant(vivid, @primary, 20);
+   .syntax--definition.syntax--punctuation { .variant(vivid, mix(@regex, @string), 40); .text(black) }
+  }
+  .syntax--set + .syntax--quantifier,
+  .syntax--group + .syntax--quantifier { .variant(vivid, mix(@regex, @string), 40) }
+  .syntax--set { .variant(vivid, @regex, 20);
+   .syntax--definition.syntax--punctuation {}
+   .syntax--character { .variant(vivid, @regex, 40) }
+  }
+  .syntax--source.syntax--ruby.syntax--embedded {
+    --color: screen(@primary, @secondary) }
+}

@@ -1,0 +1,93 @@
+
+
+// Entities
+// classes, variables, functions and methods
+// Default color for all entities with no descriptor
+.syntax--source {
+  .variable }
+
+.syntax--import {
+  .syntax--keyword;
+  .syntax--keyword {  .color.primary.variant.darker } // [import] name [from] path
+  .syntax--module {   .variable } // import [name] from path
+  .syntax--string {   .color.primary.variant.dark } // import name from [path]
+  + .syntax--terminator,
+  .syntax--delimiter,
+  .syntax--punctuation {
+    .variable }}
+
+.syntax--export {
+  > .syntax--keyword { .definition.pre }
+  > .syntax--variable { .definition.pre  }}
+
+.syntax--variable {
+  .variable;
+  &.syntax--variable.syntax--interpolation { }}
+
+.syntax--class,
+.syntax--function {
+  .definition;
+  .syntax--type:not(.syntax--arrow) {
+    .definition.keyword }
+  .syntax--modifier {
+    .definition.keyword }
+  .syntax--parameters * {
+    .definition.arguments;
+    opacity: 0.8 }
+  .syntax--name {
+    .definition.name;
+    .underline(0.35) }}
+
+// [document.body.] querySelector(args)
+.syntax--object { .variable }
+.syntax--object.syntax--variable { .variable }
+.syntax--object.syntax--variable ~.syntax--object.syntax--variable {
++ .syntax--delimiter { .delim }
+  .variable }
+
+.syntax--entity { .entity }
+
+.syntax--class {
+  @color: @function;
+  --color: @color;
+  .syntax--new { .delim; .text(bold) }
+  &.syntax--name.syntax--type { .definition.name; .underline(0.35) }
+  &.syntax--id, &.syntax--name.syntax--section { --color: @section }
+  .syntax--parameters {
+    --color: @function;
+    .syntax--punctuation { }
+    .syntax--meta,
+    > .syntax--punctuation,
+    .syntax--operator, .syntax--delimiter { .text(black) }
+    // .syntax--string,
+    // .syntax--variable,
+    // .syntax--array,
+    .syntax--parameter { }}
+  + .syntax--delimiter { .delim }
+  + .syntax--method-call { --color: @color;
+    > .syntax--arguments { --color: @color;
+      * { --color: mix(@variable, @base, 25%) }}
+    > .syntax--brace, > .syntax--brace::before { .variant(dusk, @variable) }
+    > .syntax--delimiter, > .syntax--function { .variant(subtle, @variable) }}}
+
+.syntax--support.syntax--any-method { --color: @function }
+
+.syntax--definition.syntax--function.syntax--curly,
+.syntax--meta.syntax--function ~ .syntax--definition.syntax--curly {
+  .variant(dusk, @function, 5) }
+
+.syntax--function-call *:not(.syntax--name) {
+  --color: inherit; opacity: 0.7 }
+
+.syntax--function-call,
+.syntax--method-call {
+  .definition.call.arguments;
+  * { --color: inherit }
+  .syntax--string { opacity: 0.5 }
+  .syntax--name { .definition.call }}
+
+// Drift
+  .syntax--object ~ .syntax--method-call { -webkit-filter: hue-rotate(@drift / 3) }
+  .syntax--object + .syntax--delimiter + .syntax--object { -webkit-filter: hue-rotate(-@drift / 2) }
+  .syntax--object + .syntax--delimiter + .syntax--object + .syntax--delimiter + .syntax--object { -webkit-filter: hue-rotate(-@drift / 1.5) }
+  .syntax--object + .syntax--delimiter + .syntax--object + .syntax--delimiter + .syntax--object + .syntax--delimiter + .syntax--object { -webkit-filter: hue-rotate(-@drift) }

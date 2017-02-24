@@ -1,0 +1,25 @@
+
+
+
+// Keywords and constants
+.syntax--storage { .storage;
+  &.syntax--type { .storage.subtle }
+  &.syntax--entity { .storage.subtle }}
+
+.syntax--keyword { .keyword;
+  &.syntax--control { --color: @control } // import statements
+  &.syntax--control ~ .syntax--curly { --color: fade(@control, 40%) }
+  &.syntax--other.syntax--special-method { --color: @function }
+  &.syntax--other.syntax--unit { --color: @instance }}
+
+.syntax--constant { .definition.name;
+  +.syntax--assignment { .definition.name }
+  &.syntax--numeric { --color: @keyword }
+  &.syntax--character.syntax--escape { --color: @string }
+  &.syntax--other.syntax--color { --color: @control }
+  &.syntax--other.syntax--symbol { --color: @control }}
+
+.syntax--assignment { .variable }
+.syntax--variable + .syntax--assignment { .variable }
+.syntax--var ~ .syntax--assignment { .storage }
+.syntax--round + .syntax--arrow { .delim;.definition.call }
