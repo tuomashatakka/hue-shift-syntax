@@ -71,20 +71,20 @@
   --color: desaturate(spin(@color, @shift * @aberration), @aberration/2) }
 
 .variant(dark, @color, @strength: 1) {
-  @drkn: unit(@strength * 4 + 4, %);
-  @grscl: unit(@strength * 4, %);
+  @drkn: unit(@strength * 2 + 4, %);
+  @grscl: unit(@strength * 2, %);
   --color: desaturate(darken(@color, @drkn), @grscl);
   --color: desaturate(darken(@color, @drkn), @grscl) }
 
 .muted(@col, @f: 1) {
-  @mix: unit((@f + 1) * 12, %);
-  @sat: unit(@f * 12, %);
+  @mix: unit((@f + 1) * 6, %);
+  @sat: unit(@f * 6, %);
   color: var(--color);
   --color: mix(desaturate(@col, @sat), @base, @mix) }
 
 .dimmed(@col, @f: 1) {
-  @lum: unit(12 * (@f + 1), %);
-  @sat: unit(12 * @f, %);
+  @lum: unit(6 * (@f + 1), %);
+  @sat: unit(6 * @f, %);
   color: var(--color);
   --color: desaturate(darken(@col, @lum), @sat) }
 
