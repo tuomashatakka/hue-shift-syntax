@@ -128,6 +128,24 @@
         }
       }
     },
+    "override": {
+      "title": "Color overrides",
+      "description": "Color overrides",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "scope": {
+          "title": "Scope",
+          "type": "string",
+          "default": "js"
+        },
+        "color": {
+          "title": "Color",
+          "type": "color",
+          "default": "#ffffff"
+        }
+      }
+    },
     "savedState": {
       "title": "Saved presets",
       "description": "Save & restore your favorite combinations",
