@@ -2,20 +2,25 @@
 
 // Text
 // strings, comments & regexp
+
 .syntax--none,
-.syntax--comment { .comment }
+.syntax--comment {
+  .comment }
+
 .syntax--invalid,
-.syntax--illegal { .error }
+.syntax--illegal {
+  .error }
 
 .syntax--string {
   .string }
+
 .syntax--string.syntax--link {
   .string.vivid }
+
 .syntax--text {
   .text;
   > .syntax--punctuation.syntax--terminator {
-    .string }
-}
+    .string }}
 
 .syntax--regexp {
   .regex;

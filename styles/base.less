@@ -26,17 +26,43 @@
 
   &.secondary-half ,
   &.secondary.half {
-    --color: @secondary-half }
+    --color: @secondary-half;
+    &.variant { .dimmed(@secondary-half, 1) }
+    &.light { .vivid(@secondary-half, 1) }
+    &.lighter { .vivid(@secondary-half, 2) }
+    &.dark { .dimmed(@secondary-half, 2) }
+    &.darker { .dimmed(@secondary-half, 3) }
+    &.sub { .dimmed(@secondary-half, 4) } }
+
   &.secondary.quarter,
   &.secondary-quarter {
-    --color: @secondary-quarter }
+    --color: @secondary-quarter;
+    &.variant { .dimmed(@secondary-quarter, 1) }
+    &.light { .vivid(@secondary-quarter, 1) }
+    &.lighter { .vivid(@secondary-quarter, 2) }
+    &.dark { .dimmed(@secondary-quarter, 2) }
+    &.darker { .dimmed(@secondary-quarter, 3) }
+    &.sub { .dimmed(@secondary-quarter, 4) } }
 
   &.tertiary-half,
   &.tertiary.half {
-    --color: @tertiary-half }
+    --color: @tertiary-half;
+    &.variant { .dimmed(@tertiary-half, 1) }
+    &.light { .vivid(@tertiary-half, 1) }
+    &.lighter { .vivid(@tertiary-half, 2) }
+    &.dark { .dimmed(@tertiary-half, 2) }
+    &.darker { .dimmed(@tertiary-half, 3) }
+    &.sub { .dimmed(@tertiary-half, 4) } }
+
   &.tertiary.quarter,
   &.tertiary-quarter {
-    --color: @tertiary-quarter }
+    --color: @tertiary-quarter;
+    &.variant { .dimmed(@tertiary-quarter, 1) }
+    &.light { .vivid(@tertiary-quarter, 1) }
+    &.lighter { .vivid(@tertiary-quarter, 2) }
+    &.dark { .dimmed(@tertiary-quarter, 2) }
+    &.darker { .dimmed(@tertiary-quarter, 3) }
+    &.sub { .dimmed(@tertiary-quarter, 4) } }
 
   &.primary.variant { .dimmed(@primary, 1) }
   &.primary.variant.light { .vivid(@primary, 1) }

@@ -12,6 +12,9 @@
 
   &@{cls} { --color: @color }}
 
+.tint(@color, @amount: @tint-strength) {
+  --color: mix(@color, @tint, unit(100 - @amount, %)) }
+
 
 .underline(@opacity) {
   display: inline-block;
@@ -78,9 +81,10 @@
 
 .muted(@col, @f: 1) {
   @mix: unit((@f + 1) * 6, %);
-  @sat: unit(@f * 6, %);
+  @sat: unit(@f * 5, %);
+  mix-blend-mode: hard-light;
   color: var(--color);
-  --color: mix(desaturate(@col, @sat), @base, @mix) }
+  --color: mix(saturate(@col, @sat), @base + @secondary, @mix) }
 
 .dimmed(@col, @f: 1) {
   @lum: unit(6 * (@f + 1), %);

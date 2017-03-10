@@ -128,6 +128,27 @@
         }
       }
     },
+    "fine": {
+      "title": "Fine-tuning",
+      "description": "Pin-point tweaks",
+      "type": "object",
+      "properties": {
+        "tint": {
+          "title": "Tint",
+          "description": "Globally applied tinting",
+          "type": "color",
+          "default": "#808080"
+        },
+        "tint-strength": {
+          "title": "Tint amount",
+          "description": "Amount of how much tinting is applied",
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 95
+        }
+      }
+    },
     "savedState": {
       "title": "Saved presets",
       "description": "Save & restore your favorite combinations",

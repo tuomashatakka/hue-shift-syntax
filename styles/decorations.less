@@ -17,11 +17,12 @@
 //   line-height: 0;
 // }
 
+// Line arrow
 .line.cursor-line::before {
   position: absolute;
   height: inherit;
   z-index: -1;
-  content: "\f488";
+  content: "\f487";
   left: 0px;
   font-size: 1em;
   vertical-align: middle;
@@ -31,6 +32,7 @@
   border-width: 0px 0 0px;
   margin: 0.15em 0 0 -0.1em;
 }
+
 //
 // .syntax-punctuation.syntax-html.syntax-begin.syntax-tag {
 //   width: 1.2em;
@@ -40,4 +42,13 @@
 //   line-height: 2rem;
 //   position: absolute;
 //   letter-spacing: -0.15em;
+// }
+
+// Comment prefixing
+// .syntax--punctuation.syntax--definition.syntax--comment::before {
+//   content: "#";
+//   position: absolute;
+//   transform: translate(-15%, -33%);
+//   font-size: 3em;
+//   color: var(--background-color);
 // }

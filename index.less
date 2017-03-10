@@ -38,7 +38,8 @@
 .class() {
   .color.primary }
 .variable() {
-  .color.secondary }
+  .color.secondary;
+  &.assignment { .color.secondary.half.lighter }}
 
 .definition() {
   .color.tertiary;
@@ -66,7 +67,18 @@
 
 // Color application
 [class*='syntax--'] {
+  // mix-blend-mode: screen;
   color: var(--color) }
 
 // Mini editor
-atom-text-editor[mini] .scroll-view { padding-left: 1px }
+atom-text-editor[mini] .scroll-view {
+  padding-left: 1px;
+}
+atom-text-editor {
+  // Structure
+  // text-shadow: 0 0 4px var(--background-color);
+  // Blending
+  // text-shadow: 0 0 1px var(--text-color), 0 0 2px var(--background-color);
+  // -webkit-filter: blur(0.15px);
+  // -webkit-font-smoothing: antialiased;
+}

@@ -24,6 +24,10 @@
   .variable;
   &.syntax--variable.syntax--interpolation { }}
 
+// Template string variables
+.syntax--template .syntax--embedded {
+  .variable.assignment
+}
 .syntax--class,
 .syntax--function {
   .definition;
@@ -50,11 +54,14 @@
 .syntax--class {
   @color: @function;
   --color: @color;
+
   .syntax--new { .delim; .text(bold) }
   &.syntax--name.syntax--type { .definition.name; .underline(0.35) }
   &.syntax--id, &.syntax--name.syntax--section { --color: @section }
+
   .syntax--parameters {
     --color: @function;
+
     .syntax--punctuation { }
     .syntax--meta,
     > .syntax--punctuation,
@@ -63,6 +70,7 @@
     // .syntax--variable,
     // .syntax--array,
     .syntax--parameter { }}
+
   + .syntax--delimiter { .delim }
   + .syntax--method-call { --color: @color;
     > .syntax--arguments { --color: @color;

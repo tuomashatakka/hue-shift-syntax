@@ -13,7 +13,9 @@ atom-text-editor.mini {
 atom-text-editor {
 
   // Base
-  background-color: @syntax-background-color;
+  // .tint(@syntax-background-color, 0);
+
+  background-color: var(--color, @syntax-background-color);
   color:            @syntax-text-color;
   -webkit-filter:   brightness(@config-brightness / 100) contrast(@config-contrast / 100);
 
@@ -22,21 +24,21 @@ atom-text-editor {
   .cursor {
     @overflow: 2px;
 
-    width: 0px !important;
-    border-width: 0 0 0 1px;
-    top: -@overflow;
+    width:          0px !important;
+    border-width:   0 0 0 1px;
+    top:           -@overflow;
     padding-bottom: @overflow * 2;
-    box-sizing: content-box;
+    box-sizing:     content-box;
     background-color: @syntax-selection-color;
-    color: @syntax-cursor-color }
+    color:          @syntax-cursor-color }
 
   .selection .region {
-    border-radius: 2px;
-    margin-left: -2px;
-    margin-right: -4px !important;
-    background: linear-gradient(90deg, rgba(255, 247, 167, 0.36) 0vw, rgba(255, 7, 121, 0.28) 100vw);
+    border-radius:  2px;
+    margin-left:   -2px;
+    margin-right:  -4px !important;
+    background:     linear-gradient(90deg, rgba(255, 247, 167, 0.36) 0vw, rgba(255, 7, 121, 0.28) 100vw);
     mix-blend-mode: screen;
-    z-index: 5;
+    z-index:        5;
     //
     // background-color: @syntax-selection-color;
   }
@@ -82,16 +84,16 @@ atom-text-editor {
   .search-results {
     .marker .region {
       background-color: fade(@syntax-result-marker-color, 40%) !important;
-      border: 0px solid fade(@syntax-result-marker-color, 20%) !important }
+      border:       0px solid fade(@syntax-result-marker-color, 20%) !important }
 
     .marker.current-result .region {
-      border: 3px solid fade(@syntax-result-marker-color-selected, 60%) !important }}
+      border:       3px solid fade(@syntax-result-marker-color-selected, 60%) !important }}
 
   .bracket-matcher .region {
-    margin-top: 0px;
-    opacity: 1;
-    border-radius: 2px;
-    border-bottom: 1px solid @tertiary;
-    background: fade(@tertiary, 20%);
+    margin-top:     0px;
+    opacity:        1;
+    border-radius:  2px;
+    border-bottom:  1px solid @tertiary;
+    background:     fade(@tertiary, 20%);
   }
 }
