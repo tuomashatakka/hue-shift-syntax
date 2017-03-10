@@ -13,12 +13,14 @@
 @import "styles/grammars/markdown";
 @import "styles/grammars/html";
 @import "styles/grammars/css";
+@import "styles/grammars/json";
 
 @import "styles/package/linter";
 // @import 'fixtures/default';
 
 
 .comment() {
+  .text(thin);
   --color: @comment }
 .text() {
   --color: @instance }
@@ -37,6 +39,7 @@
 
 .class() {
   .color.primary }
+
 .variable() {
   .color.secondary;
   &.assignment { .color.secondary.half.lighter }}
@@ -60,10 +63,6 @@
 .delim() {
   --color: inherit;
   opacity: 0.5; }
-
-.apply(@clas, @color) {
-  @selector: ~".syntax--@{clas}";
-  @{selector} {     --color: @color }}
 
 // Color application
 [class*='syntax--'] {
