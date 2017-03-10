@@ -22,7 +22,6 @@ describe "Hue Shift syntax theme is activated", ->
 
     # Default value
     conf = atom.config.get 'hue-shift-syntax'
-    console.log conf
 
     expect(conf.filter.contrast).toBe 100
     expect(conf.filter.brightness).toBe 100
