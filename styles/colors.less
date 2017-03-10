@@ -9,27 +9,35 @@
 @lum:                       @config-luminance / 100;
 @shift:                     @config-aberration;
 @drift:                     unit(@config-drift, deg);
+@tint:                      @config-tint;
+@tint-strength:             @config-tint-strength / 1.5;
+@tint-hue:                  hue(@tint) * @tint-strength / 100;
+@tint-sat:                  saturation(@tint) * @tint-strength / 100;
 
-@primary:                   hsla(@hue, @sat, @lum, 1);
-@secondary:                 hsla(@hue + @shift, @sat, @lum, 1);
-@tertiary:                  hsla(@hue - @shift, @sat, @lum, 1);
-@complement:                hsla(@hue + 180deg, @sat, @lum, 1);
+@primary:                   mix(@tint, hsla(@hue, @sat, @lum, 1), unit(@tint-strength, %));
+@secondary:                 mix(@tint, hsla(@hue + @shift, @sat, @lum, 1), unit(@tint-strength, %));
+@tertiary:                  mix(@tint, hsla(@hue - @shift, @sat, @lum, 1), unit(@tint-strength, %));
+@complement:                mix(@tint, hsla(@hue + 180deg, @sat, @lum, 1), unit(@tint-strength, %));
 
-@secondary-half:            hsla(@hue + @shift / 2, @sat, @lum, 1);
-@tertiary-half:             hsla(@hue - @shift / 2, @sat, @lum, 1);
-@secondary-quarter:         hsla(@hue + @shift / 4, @sat, @lum, 1);
-@tertiary-quarter:          hsla(@hue - @shift / 4, @sat, @lum, 1);
+@secondary-half:            mix(@tint, hsla(@hue + @shift / 2, @sat, @lum, 1), unit(@tint-strength, %));
+@tertiary-half:             mix(@tint, hsla(@hue - @shift / 2, @sat, @lum, 1), unit(@tint-strength, %));
+@secondary-quarter:         mix(@tint, hsla(@hue + @shift / 4, @sat, @lum, 1), unit(@tint-strength, %));
+@tertiary-quarter:          mix(@tint, hsla(@hue - @shift / 4, @sat, @lum, 1), unit(@tint-strength, %));
 
 @foundation:                hsla(@hue, (@sat - 0.40)/10, (@lum)/10, 1);
-@background-color:          mix(desaturate(softlight(#21272f, @primary), 20%), @foundation, 25%);
-@background-color:          saturate(lighten(@foundation - #060606, unit(@config-background-level / 4, %)), unit(@config-background-level / 20, %));
+// @background-color:          mix(desaturate(softlight(#21272f, @primary), 20%), @foundation, 25%);
+@bg-color:                  saturate(lighten(@foundation - #060606, unit(@config-background-level / 5, %)), unit(@config-background-level / 20, %));
+@bg-hue:                    hue(@bg-color);
+@bg-sat:                    saturation(@bg-color);
+@bg-lum:                    luminance(@bg-color);
+@background-color:          hsla((@bg-hue + @tint-hue) / 2, (@bg-sat + @tint-sat) / 2, @bg-lum * 0.75, 1);
 
-@very-light-gray:           lighten(@background-color, 60%);
-@light-gray:                lighten(@background-color, 40%);
-@gray:                      lighten(@background-color, 20%);
-@dark-gray:                 @background-color;
-@very-dark-gray:            darken(@background-color, 15%);
+@very-light-gray:           mix(@tint, lighten(@background-color, 60%), unit(@tint-strength, %));
+@light-gray:                mix(@tint, lighten(@background-color, 40%), unit(@tint-strength, %));
+@gray:                      mix(@tint, lighten(@background-color, 20%), unit(@tint-strength, %));
+@dark-gray:                 mix(@tint, @background-color, unit(@tint-strength, %));
+@very-dark-gray:            mix(@tint, darken(@background-color, 15%), unit(@tint-strength, %));
 
 @blend-basis:               mix(@background-color, @primary + #777, unit(@config-dim-minor, %));
 
-@opaque-dark:               mix(@primary, #383838);
+@opaque-dark:               mix(@tint, mix(@primary, #383838), unit(@tint-strength, %));

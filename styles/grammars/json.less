@@ -1,0 +1,17 @@
+
+.syntax--json .syntax--punctuation {
+  .delim }
+
+.syntax--json .syntax--key { &, * {
+  .definition }}
+
+.syntax--json .syntax--value > .syntax--separator {
+  .delim;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  + *, + * *, ~ .syntax--punctuation {
+    .delim }}
+.syntax--json .syntax--array { &, * {
+    opacity: 0.75;
+  }
+}

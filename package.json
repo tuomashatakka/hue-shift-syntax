@@ -4,7 +4,7 @@
   "main": "./lib/index.js",
   "keymaps": "./keymaps/hue-shift-syntax.cson",
   "menus": "./menus/hue-shift-syntax.cson",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Configurable syntax engine/framework with a vivid array of configuration",
   "keywords": [
     "syntax",
@@ -143,6 +143,27 @@
           "title": "Color",
           "type": "color",
           "default": "#ffffff"
+        }
+      }
+    },
+    "fine": {
+      "title": "Fine-tuning",
+      "description": "Pin-point tweaks",
+      "type": "object",
+      "properties": {
+        "tint": {
+          "title": "Tint",
+          "description": "Globally applied tinting",
+          "type": "color",
+          "default": "#808080"
+        },
+        "tint-strength": {
+          "title": "Tint amount",
+          "description": "Amount of how much tinting is applied",
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 95
         }
       }
     },

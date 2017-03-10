@@ -21,7 +21,7 @@ export default class PreviewView extends Component {
           className='editor'>
           <div className='select grammar-select'>
             <h2><span className='icon icon-plug' /> Grammar</h2>
-            <select onChange={(e) => {console.log(e.target, e.target.value); updatePreview(e.target.value) }}>
+            <select onChange={(e) => updatePreview(e.target.value) }>
               {choices.map(opt => <option key={opt} value={opt}>{opt}</option>)}
             </select>
           </div>
