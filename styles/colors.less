@@ -10,7 +10,9 @@
 @shift:                     @config-aberration;
 @drift:                     unit(@config-drift, deg);
 @tint:                      @config-tint;
-@tint-strength:             @config-tint-strength / 3;
+@tint-strength:             @config-tint-strength / 1.5;
+@tint-hue:                  hue(@tint) * @tint-strength / 100;
+@tint-sat:                  saturation(@tint) * @tint-strength / 100;
 
 @primary:                   mix(@tint, hsla(@hue, @sat, @lum, 1), unit(@tint-strength, %));
 @secondary:                 mix(@tint, hsla(@hue + @shift, @sat, @lum, 1), unit(@tint-strength, %));
@@ -22,9 +24,13 @@
 @secondary-quarter:         mix(@tint, hsla(@hue + @shift / 4, @sat, @lum, 1), unit(@tint-strength, %));
 @tertiary-quarter:          mix(@tint, hsla(@hue - @shift / 4, @sat, @lum, 1), unit(@tint-strength, %));
 
-@foundation:                mix(@tint, hsla(@hue, (@sat - 0.40)/10, (@lum)/10, 1), unit(@tint-strength, %));
-@background-color:          mix(desaturate(softlight(#21272f, @primary), 20%), @foundation, 25%);
-@background-color:          saturate(lighten(@foundation - #060606, unit(@config-background-level / 5, %)), unit(@config-background-level / 20, %));
+@foundation:                hsla(@hue, (@sat - 0.40)/10, (@lum)/10, 1);
+// @background-color:          mix(desaturate(softlight(#21272f, @primary), 20%), @foundation, 25%);
+@bg-color:                  saturate(lighten(@foundation - #060606, unit(@config-background-level / 5, %)), unit(@config-background-level / 20, %));
+@bg-hue:                    hue(@bg-color);
+@bg-sat:                    saturation(@bg-color);
+@bg-lum:                    luminance(@bg-color);
+@background-color:          hsla((@bg-hue + @tint-hue) / 2, (@bg-sat + @tint-sat) / 2, @bg-lum * 0.75, 1);
 
 @very-light-gray:           mix(@tint, lighten(@background-color, 60%), unit(@tint-strength, %));
 @light-gray:                mix(@tint, lighten(@background-color, 40%), unit(@tint-strength, %));
