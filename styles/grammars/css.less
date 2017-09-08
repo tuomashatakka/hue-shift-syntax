@@ -2,19 +2,18 @@
 // CSS selectors
 // Class
 .syntax--css {
-  .syntax--class { --color: extract(@selector, 1) };
-  .syntax--tag { --color: extract(@selector, 2) };
-  .syntax--id { --color: extract(@selector, 3) };
-  .syntax--attribute { --color: extract(@selector, 4) };
-  .syntax--attribute-selector { --color: extract(@selector, 5) };
-  .syntax--pseudo-class { --color: extract(@selector, 5) };
-  .syntax--pseudo-element { --color: extract(@selector, 5) };
-  &.syntax--id { .color.primary.variant.lighter }
-
+  .syntax--class { .class };
+  .syntax--tag { .entity };
+  .syntax--id { .definition.name };
+  .syntax--attribute { .definition.arguments };
+  .syntax--attribute-selector { .definition.call };
+  .syntax--pseudo-class { .storage };
+  .syntax--pseudo-element { .storage.subtle };
+  &.syntax--id { .definition }
   .syntax--string,
   .syntax--punctuation { -webkit-filter: saturate(50%); --color: inherit }
   .syntax--string { opacity: 1 }
-  .syntax--punctuation { opacity: 0.5 }}
+  .syntax--punctuation::before { opacity: 0.75 }}
 
 // CSS Selectors
 .syntax--property-list {
