@@ -1,3 +1,8 @@
+/**
+ * Shared type contract between ColorEngine (producer) and ThemeApplicator (consumer).
+ * ColorEngine.computePalette accepts HueShiftSettings and returns a ColorPalette.
+ * All color string fields are lowercase 6-digit hex values of the form `#rrggbb`.
+ */
 export interface HueShiftSettings {
   hue: number;           // 1–360
   saturation: number;    // 1–100
