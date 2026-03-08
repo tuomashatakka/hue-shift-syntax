@@ -1,76 +1,31 @@
-# Hue Shift - Syntax theme for Atom.io
+# Hue Shift Syntax
 
-```
-hue-shift:open-preview
-``` 
+A configurable VS Code syntax color theme driven by HSL color theory.
 
-> ★★★★★
-> It's nice. It's configurable.
->
-> `As commented by Pekka Havumäki (fictional character)`
+## How it works
 
+The extension reads your settings, computes a full color palette using HSL
+math, and writes the result to your VS Code color customizations — applying
+immediately whenever you change a setting.
 
-![Close-up](https://tuomashatakka.github.io/hue-shift-syntax/assets/closeup-wide.png)
+## Configuration
 
-> ★★★★★
-> It's brilliant
->
-> `As commented by Pekka Havukoski (fictional character)`
+All settings live under `hueShift.*` in your VS Code settings:
 
-![Grasshopper](https://tuomashatakka.github.io/hue-shift-syntax/assets/grasshopper.png)
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `hueShift.hue` | `250` | Base hue (1–360) |
+| `hueShift.saturation` | `70` | Color vividness (1–100) |
+| `hueShift.luminance` | `70` | Token brightness (30–100) |
+| `hueShift.aberration` | `60` | Hue offset for secondary/tertiary (15–165) |
+| `hueShift.drift` | `30` | Luminance variance (0–100) |
+| `hueShift.backgroundLevel` | `30` | Editor background brightness (1–100) |
+| `hueShift.dimMinor` | `40` | Muting for comments/strings (10–90) |
+| `hueShift.tint` | `#808080` | Global tint color |
+| `hueShift.tintStrength` | `0` | Tint blend strength (0–95) |
+| `hueShift.brightness` | `100` | Brightness multiplier (60–200) |
+| `hueShift.contrast` | `100` | Contrast multiplier (40–250) |
 
-> ★★★★★
-> Simply put, it is pure perfection
->
-> `As commented by Pekka Havula (fictional character)`
+## License
 
-![With defaultish config](https://tuomashatakka.github.io/hue-shift-syntax/assets/blue.png)
-
-
-### Make your editor fit your favorite colors.
-
-Choose any color combination you have ever had a
-dream about!
-
-This syntax theme includes a dedicated preview
-with sliders for each of its configuration options.
-
-It's as easy as 1, 2, 3 to finally have the
-syntax coloring you've always dreamt of!
-
-
-### How to make your editor super-kewl (instructions)
-
-With my superior UI theme ([Reduced Dark UI](http://atom.io/themes/reduced-dark-ui))
-Atom looks sassier than ever:
-
-![parade](https://tuomashatakka.github.io/hue-shift-syntax/assets/parade.png)
-
-So in order to get the full theme starter pack:
-
- 1. Download this syntax theme
- 2. Download the __Reduced Dark UI theme__
- 3. ???
- 4. Let's go to the mall, **today!**
-
-### Epilogue/bonus
-
-Ugly themes may also be created:
-
-![Ugly themes may also be created](https://tuomashatakka.github.io/hue-shift-syntax/assets/fugly.png)
-
-For a couple more screenshots, please see the [assets](https://github.com/tuomashatakka/hue-shift-syntax/blob/master/assets) folder of the package's repo
-
-### Key concepts
-
-Also known as: what to expect when you're looking forward to:
-
-- [x] Configurable hue, saturation and luminance: Make it brighter, more vivid, blue or red with simply moving sliders
-- [x] Preview changes real-time
-- [ ] Preset saving
-- [ ] Fine tuning of discrete colors: override colors you don't like
-
-
-### Prologue
-
-Benjamin Button pls stahp at 1ce
+MIT © Tuomas Hatakka

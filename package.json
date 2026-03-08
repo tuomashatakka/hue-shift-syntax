@@ -4,59 +4,102 @@
   "description": "Configurable syntax colors driven by HSL color theory",
   "version": "1.0.0",
   "publisher": "tuomashatakka",
-  "engines": { "vscode": "^1.85.0" },
-  "categories": ["Themes"],
-  "keywords": ["syntax", "theme", "hue", "configurable", "colorful"],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "syntax",
+    "theme",
+    "hue",
+    "configurable",
+    "colorful"
+  ],
   "repository": "https://github.com/tuomashatakka/hue-shift-syntax",
   "license": "MIT",
   "main": "./out/extension.js",
-  "activationEvents": ["onStartupFinished"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "contributes": {
     "configuration": {
       "title": "Hue Shift",
       "properties": {
         "hueShift.hue": {
-          "type": "number", "default": 250, "minimum": 1, "maximum": 360,
+          "type": "number",
+          "default": 250,
+          "minimum": 1,
+          "maximum": 360,
           "description": "Base hue for the syntax theme (0–360 degrees on the color wheel)"
         },
         "hueShift.saturation": {
-          "type": "number", "default": 70, "minimum": 1, "maximum": 100,
+          "type": "number",
+          "default": 70,
+          "minimum": 1,
+          "maximum": 100,
           "description": "Color vividness"
         },
         "hueShift.luminance": {
-          "type": "number", "default": 70, "minimum": 30, "maximum": 100,
+          "type": "number",
+          "default": 70,
+          "minimum": 30,
+          "maximum": 100,
           "description": "Token brightness"
         },
         "hueShift.aberration": {
-          "type": "number", "default": 60, "minimum": 15, "maximum": 165,
+          "type": "number",
+          "default": 60,
+          "minimum": 15,
+          "maximum": 165,
           "description": "Hue offset between primary and secondary/tertiary colors"
         },
         "hueShift.drift": {
-          "type": "number", "default": 30, "minimum": 0, "maximum": 100,
+          "type": "number",
+          "default": 30,
+          "minimum": 0,
+          "maximum": 100,
           "description": "Luminance variance across palette colors"
         },
         "hueShift.backgroundLevel": {
-          "type": "number", "default": 30, "minimum": 1, "maximum": 100,
+          "type": "number",
+          "default": 30,
+          "minimum": 1,
+          "maximum": 100,
           "description": "Editor background brightness"
         },
         "hueShift.dimMinor": {
-          "type": "number", "default": 40, "minimum": 10, "maximum": 90,
+          "type": "number",
+          "default": 40,
+          "minimum": 10,
+          "maximum": 90,
           "description": "Muting strength for comments and strings"
         },
         "hueShift.tint": {
-          "type": "string", "default": "#808080",
+          "type": "string",
+          "default": "#808080",
           "description": "Global tint color (hex)"
         },
         "hueShift.tintStrength": {
-          "type": "number", "default": 0, "minimum": 0, "maximum": 95,
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 95,
           "description": "How strongly the tint blends into all colors (0 = none)"
         },
         "hueShift.brightness": {
-          "type": "number", "default": 100, "minimum": 60, "maximum": 200,
+          "type": "number",
+          "default": 100,
+          "minimum": 60,
+          "maximum": 200,
           "description": "Token brightness multiplier (applied as HSL lightness offset)"
         },
         "hueShift.contrast": {
-          "type": "number", "default": 100, "minimum": 40, "maximum": 250,
+          "type": "number",
+          "default": 100,
+          "minimum": 40,
+          "maximum": 250,
           "description": "Token contrast multiplier (applied as saturation offset)"
         }
       }
@@ -65,7 +108,9 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "test": "jest"
+    "test": "jest",
+    "lint": "bun eslint",
+    "tsc": "bun tsc --noEmit"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
@@ -73,6 +118,10 @@
     "@types/vscode": "^1.85.0",
     "jest": "^29.5.0",
     "ts-jest": "^29.1.0",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "@tuomashatakka/eslint-config": "^2.6.2"
   }
 }

@@ -1,47 +1,44 @@
-import { hslToHex, hexToRgb, hexToHsl, clamp } from '../ColorEngine';
+import { mixColors, lighten, darken, addHex, hexToHsl } from '../ColorEngine'
 
-describe('clamp', () => {
-  it('clamps below min', () => expect(clamp(-5, 0, 100)).toBe(0));
-  it('clamps above max', () => expect(clamp(200, 0, 100)).toBe(100));
-  it('passes through in-range values', () => expect(clamp(50, 0, 100)).toBe(50));
-});
 
-describe('hslToHex', () => {
-  it('converts red (0, 1, 0.5)', () => {
-    expect(hslToHex(0, 1, 0.5)).toBe('#ff0000');
-  });
-  it('converts white (0, 0, 1)', () => {
-    expect(hslToHex(0, 0, 1)).toBe('#ffffff');
-  });
-  it('converts black (0, 0, 0)', () => {
-    expect(hslToHex(0, 0, 0)).toBe('#000000');
-  });
-  it('converts blue (240, 1, 0.5)', () => {
-    expect(hslToHex(240, 1, 0.5)).toBe('#0000ff');
-  });
-  it('wraps hue > 360', () => {
-    expect(hslToHex(360, 1, 0.5)).toBe(hslToHex(0, 1, 0.5));
-  });
-  it('wraps negative hue', () => {
-    expect(hslToHex(-60, 1, 0.5)).toBe(hslToHex(300, 1, 0.5));
-  });
-});
+describe('mixColors', () => {
+  it('mixes colors with 0% weight', () => {
+    expect(mixColors('#ff0000', '#0000ff', 0)).toBe('#0000ff')
+  })
+  it('mixes colors with 100% weight', () => {
+    expect(mixColors('#ff0000', '#0000ff', 100)).toBe('#ff0000')
+  })
+  it('mixes colors with 50% weight', () => {
+    expect(mixColors('#ff0000', '#0000ff', 50)).toBe('#800080')
+  })
+})
 
-describe('hexToRgb', () => {
-  it('parses red', () => expect(hexToRgb('#ff0000')).toEqual([255, 0, 0]));
-  it('parses black', () => expect(hexToRgb('#000000')).toEqual([0, 0, 0]));
-  it('parses white', () => expect(hexToRgb('#ffffff')).toEqual([255, 255, 255]));
-});
+describe('lighten', () => {
+  it('lightens red by 10%', () => {
+    expect(lighten('#ff0000', 10)).toBe('#ff3333')
+  })
+  it('lightens white by 50%', () => {
+    expect(lighten('#ffffff', 50)).toBe('#ffffff')
+  })
+})
 
-describe('hexToHsl', () => {
-  it('round-trips red', () => {
-    const [h, s, l] = hexToHsl('#ff0000');
-    expect(h).toBeCloseTo(0, 0);
-    expect(s).toBeCloseTo(1, 2);
-    expect(l).toBeCloseTo(0.5, 2);
-  });
-  it('round-trips white', () => {
-    const [h, s, l] = hexToHsl('#ffffff');
-    expect(l).toBeCloseTo(1, 2);
-  });
-});
+describe('darken', () => {
+  it('darkens blue by 20%', () => {
+    expect(darken('#0000ff', 20)).toBe('#000099')
+  })
+  it('darkens black by 10%', () => {
+    expect(darken('#000000', 10)).toBe('#000000')
+  })
+})
+
+describe('addHex', () => {
+  it('adds red and green', () => {
+    expect(addHex('#ff0000', '#00ff00')).toBe('#ffff00')
+  })
+  it('adds white and black', () => {
+    expect(addHex('#ffffff', '#000000')).toBe('#ffffff')
+  })
+  it('adds colors with overflow', () => {
+    expect(addHex('#808080', '#808080')).toBe('#ffffff')
+  })
+})
