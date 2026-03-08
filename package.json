@@ -1,206 +1,78 @@
 {
   "name": "hue-shift-syntax",
-  "theme": "syntax",
-  "main": "./lib/index.js",
-  "keymaps": "./keymaps/hue-shift-syntax.cson",
-  "menus": "./menus/hue-shift-syntax.cson",
-  "version": "0.3.2",
-  "description": "Configurable syntax engine/framework with a vivid array of configuration",
-  "keywords": [
-    "syntax",
-    "theme",
-    "hue",
-    "custom",
-    "configurable",
-    "colorful"
-  ],
+  "displayName": "Hue Shift Syntax",
+  "description": "Configurable syntax colors driven by HSL color theory",
+  "version": "1.0.0",
+  "publisher": "tuomashatakka",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Themes"],
+  "keywords": ["syntax", "theme", "hue", "configurable", "colorful"],
   "repository": "https://github.com/tuomashatakka/hue-shift-syntax",
   "license": "MIT",
-  "author": "Tuomas Hatakka",
-  "engines": {
-    "atom": ">=1.0.0 <2.0.0"
-  },
-  "dependencies": {
-    "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "shelljs": "0.7.6",
-    "underscore": "^1.8.3"
-  },
-  "configSchema": {
-    "main": {
-      "title": "Main",
-      "description": "",
-      "type": "object",
+  "main": "./out/extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "contributes": {
+    "configuration": {
+      "title": "Hue Shift",
       "properties": {
-        "hue": {
-          "title": "Hue",
-          "description": "Overall hue for the syntax theme",
-          "type": "number",
-          "minimum": 1,
-          "maximum": 360,
-          "default": 250
+        "hueShift.hue": {
+          "type": "number", "default": 250, "minimum": 1, "maximum": 360,
+          "description": "Base hue for the syntax theme (0–360 degrees on the color wheel)"
         },
-        "saturation": {
-          "title": "Saturation",
-          "description": "Vividness of the colors",
-          "type": "number",
-          "minimum": 1,
-          "maximum": 100,
-          "default": 70
+        "hueShift.saturation": {
+          "type": "number", "default": 70, "minimum": 1, "maximum": 100,
+          "description": "Color vividness"
         },
-        "luminance": {
-          "title": "Luminance",
-          "description": "Brightness",
-          "type": "number",
-          "minimum": 30,
-          "maximum": 100,
-          "default": 70
-        }
-      }
-    },
-    "modifiers": {
-      "title": "Modifiers",
-      "description": "Palette modifiers",
-      "type": "object",
-      "properties": {
-        "aberration": {
-          "title": "Aberration",
-          "description": "Complementary colors' shift from the primary color",
-          "type": "number",
-          "minimum": 15,
-          "maximum": 165,
-          "default": 60
+        "hueShift.luminance": {
+          "type": "number", "default": 70, "minimum": 30, "maximum": 100,
+          "description": "Token brightness"
         },
-        "drift": {
-          "title": "Drifting",
-          "description": "Variance in discrete colors' luminance",
-          "type": "number",
-          "minimum": 0,
-          "maximum": 100,
-          "default": 30
+        "hueShift.aberration": {
+          "type": "number", "default": 60, "minimum": 15, "maximum": 165,
+          "description": "Hue offset between primary and secondary/tertiary colors"
         },
-        "background-level": {
-          "title": "Background brightness",
-          "description": "Brightness level for the editor's background color",
-          "type": "number",
-          "minimum": 1,
-          "maximum": 100,
-          "default": 30
+        "hueShift.drift": {
+          "type": "number", "default": 30, "minimum": 0, "maximum": 100,
+          "description": "Luminance variance across palette colors"
         },
-        "dim:minor": {
-          "title": "Minor color muting",
-          "description": "Blend minor texts with background to get a cleaner outlook (comments, strings, separators, gt & lt symbols in html and so on..)",
-          "type": "number",
-          "minimum": 10,
-          "maximum": 90,
-          "default": 40
-        }
-      }
-    },
-    "filter": {
-      "title": "Filters",
-      "description": "May cause a drop in performance",
-      "type": "object",
-      "properties": {
-        "blending": {
-          "title": "Blending",
-          "description": "Coming Soon™",
-          "type": "number",
-          "minimum": 1,
-          "maximum": 120,
-          "default": 30
+        "hueShift.backgroundLevel": {
+          "type": "number", "default": 30, "minimum": 1, "maximum": 100,
+          "description": "Editor background brightness"
         },
-        "contrast": {
-          "title": "Contrast",
-          "description": "Contrast filter",
-          "type": "number",
-          "minimum": 40,
-          "maximum": 250,
-          "default": 100
+        "hueShift.dimMinor": {
+          "type": "number", "default": 40, "minimum": 10, "maximum": 90,
+          "description": "Muting strength for comments and strings"
         },
-        "brightness": {
-          "title": "Brightness",
-          "description": "Brightness filter",
-          "type": "number",
-          "minimum": 60,
-          "maximum": 200,
-          "default": 100
-        }
-      }
-    },
-    "override": {
-      "title": "Color overrides",
-      "description": "Color overrides",
-      "type": "object",
-      "default": {},
-      "properties": {
-        "scope": {
-          "title": "Scope",
-          "type": "string",
-          "default": "js"
+        "hueShift.tint": {
+          "type": "string", "default": "#808080",
+          "description": "Global tint color (hex)"
         },
-        "color": {
-          "title": "Color",
-          "type": "color",
-          "default": "#ffffff"
-        }
-      }
-    },
-    "fine": {
-      "title": "Fine-tuning",
-      "description": "Pin-point tweaks",
-      "type": "object",
-      "properties": {
-        "tint": {
-          "title": "Tint",
-          "description": "Globally applied tinting",
-          "type": "color",
-          "default": "#808080"
+        "hueShift.tintStrength": {
+          "type": "number", "default": 0, "minimum": 0, "maximum": 95,
+          "description": "How strongly the tint blends into all colors (0 = none)"
         },
-        "tint-strength": {
-          "title": "Tint amount",
-          "description": "Amount of how much tinting is applied",
-          "type": "number",
-          "default": 0,
-          "minimum": 0,
-          "maximum": 95
-        }
-      }
-    },
-    "savedState": {
-      "title": "Saved presets",
-      "description": "Save & restore your favorite combinations",
-      "type": "object",
-      "properties": {
-        "current": {
-          "order": 1,
-          "title": "Current preset",
-          "type": "string",
-          "default": "default"
+        "hueShift.brightness": {
+          "type": "number", "default": 100, "minimum": 60, "maximum": 200,
+          "description": "Token brightness multiplier (applied as HSL lightness offset)"
         },
-        "preset": {
-          "order": 2,
-          "title": "Presets",
-          "type": "object",
-          "default": {}
+        "hueShift.contrast": {
+          "type": "number", "default": 100, "minimum": 40, "maximum": 250,
+          "description": "Token contrast multiplier (applied as saturation offset)"
         }
       }
     }
   },
-  "eslintConfig": {
-    "ecmaVersion": 7,
-    "env": {
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 7,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    }
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "jest"
   },
   "devDependencies": {
-    "jasmine": "2.5.3"
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.3.0"
   }
 }
