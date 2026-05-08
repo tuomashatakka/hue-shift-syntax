@@ -1,5 +1,16 @@
 # Hue Shift Syntax
 
+<div align="center">
+  <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+    <div style="width: 60px; height: 60px; background-color: #FFD1DC; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#FFD1DC</div>
+    <div style="width: 60px; height: 60px; background-color: #FFE5B4; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#FFE5B4</div>
+    <div style="width: 60px; height: 60px; background-color: #FFFFE0; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#FFFFE0</div>
+    <div style="width: 60px; height: 60px; background-color: #E6E6FA; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#E6E6FA</div>
+    <div style="width: 60px; height: 60px; background-color: #B5EAD7; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#B5EAD7</div>
+    <div style="width: 60px; height: 60px; background-color: #C7CEEA; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#C7CEEA</div>
+  </div>
+</div>
+
 A configurable VS Code syntax color theme driven by HSL color theory.
 
 ## How it works

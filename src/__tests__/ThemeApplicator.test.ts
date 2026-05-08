@@ -12,6 +12,9 @@ const PALETTE: ColorPalette = {
   gray:          '#606080',
   darkGray:      '#2a2a40',
   veryDarkGray:  '#15152a',
+  rawPrimary:    '#7c6fcf',
+  rawSecondary:  '#cf6f9a',
+  rawTertiary:   '#6fcfc4',
   keyword:       '#7c6fcf',
   string:        '#9c8fcf',
   variable:      '#6fcfc4',
@@ -21,6 +24,15 @@ const PALETTE: ColorPalette = {
   parameter:     '#cf6f9a',
   operator:      '#8080a0',
   number:        '#6fcfc4',
+  type:          '#cf6f9a',
+  class:         '#9c8fcf',
+  interface:     '#80a0c0',
+  method:        '#80a0c0',
+  property:      '#9c8fcf',
+  punctuation:   '#606080',
+  constant:      '#a090d0',
+  tag:           '#cf6f9a',
+  attribute:     '#80a0c0',
 }
 
 const mockUpdate = jest.fn().mockResolvedValue(undefined)

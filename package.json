@@ -1,14 +1,14 @@
 {
   "name": "hue-shift-syntax",
   "displayName": "Hue Shift Syntax",
-  "description": "Configurable syntax colors driven by HSL color theory",
-  "version": "1.0.0",
+  "description": "A plugin framework for calculating syntax theme colors based on HSL color theory. Generates complete color themes from configurable settings.",
+  "version": "2.0.0",
   "publisher": "tuomashatakka",
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
-    "Themes"
+    "Other"
   ],
   "keywords": [
     "syntax",
@@ -21,9 +21,26 @@
   "license": "MIT",
   "main": "./out/extension.js",
   "activationEvents": [
-    "onStartupFinished"
+    "onStartupFinished",
+    "onCommand:hueShift.refreshTheme",
+    "onCommand:hueShift.showThemeInfo",
+    "onCommand:hueShift.exportTheme"
   ],
   "contributes": {
+    "commands": [
+      {
+        "command": "hueShift.refreshTheme",
+        "title": "Hue Shift: Refresh Theme"
+      },
+      {
+        "command": "hueShift.showThemeInfo",
+        "title": "Hue Shift: Show Theme Info"
+      },
+      {
+        "command": "hueShift.exportTheme",
+        "title": "Hue Shift: Export Theme as JSON"
+      }
+    ],
     "configuration": {
       "title": "Hue Shift",
       "properties": {
