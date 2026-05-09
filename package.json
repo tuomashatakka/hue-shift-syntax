@@ -21,10 +21,7 @@
   "license": "MIT",
   "main": "./out/extension.js",
   "activationEvents": [
-    "onStartupFinished",
-    "onCommand:hueShift.refreshTheme",
-    "onCommand:hueShift.showThemeInfo",
-    "onCommand:hueShift.exportTheme"
+    "onStartupFinished"
   ],
   "contributes": {
     "commands": [
@@ -126,11 +123,11 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "test": "jest",
-    "lint": "bun eslint",
+    "lint": "bun eslint src",
     "tsc": "bun tsc --noEmit"
   },
   "devDependencies": {
-    "@tuomashatakka/eslint-config": "^2.6.2",
+    "@tuomashatakka/eslint-config": "*",
     "@types/jest": "^29.5.0",
     "@types/node": "^20.0.0",
     "@types/vscode": "^1.85.0",

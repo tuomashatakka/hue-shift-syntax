@@ -20,17 +20,17 @@ export interface HueShiftSettings {
  * Default settings for the Hue Shift plugin.
  */
 export const DEFAULT_SETTINGS: HueShiftSettings = {
-  hue: 250,
-  saturation: 70,
-  luminance: 70,
-  aberration: 60,
-  drift: 30,
+  hue:             250,
+  saturation:      70,
+  luminance:       70,
+  aberration:      60,
+  drift:           30,
   backgroundLevel: 30,
-  dimMinor: 40,
-  tint: '#808080',
-  tintStrength: 0,
-  brightness: 100,
-  contrast: 100,
+  dimMinor:        40,
+  tint:            '#808080',
+  tintStrength:    0,
+  brightness:      100,
+  contrast:        100,
 } as const
 
 /**
@@ -38,29 +38,29 @@ export const DEFAULT_SETTINGS: HueShiftSettings = {
  * Used for validation and clamping.
  */
 export interface SettingRanges {
-  hue: [number, number];
-  saturation: [number, number];
-  luminance: [number, number];
-  aberration: [number, number];
-  drift: [number, number];
+  hue:             [number, number];
+  saturation:      [number, number];
+  luminance:       [number, number];
+  aberration:      [number, number];
+  drift:           [number, number];
   backgroundLevel: [number, number];
-  dimMinor: [number, number];
-  tintStrength: [number, number];
-  brightness: [number, number];
-  contrast: [number, number];
+  dimMinor:        [number, number];
+  tintStrength:    [number, number];
+  brightness:      [number, number];
+  contrast:        [number, number];
 }
 
 export const SETTING_RANGES: SettingRanges = {
-  hue: [1, 360],
-  saturation: [1, 100],
-  luminance: [30, 100],
-  aberration: [15, 165],
-  drift: [0, 100],
-  backgroundLevel: [1, 100],
-  dimMinor: [10, 90],
-  tintStrength: [0, 95],
-  brightness: [60, 200],
-  contrast: [40, 250],
+  hue:             [ 1, 360 ],
+  saturation:      [ 1, 100 ],
+  luminance:       [ 30, 100 ],
+  aberration:      [ 15, 165 ],
+  drift:           [ 0, 100 ],
+  backgroundLevel: [ 1, 100 ],
+  dimMinor:        [ 10, 90 ],
+  tintStrength:    [ 0, 95 ],
+  brightness:      [ 60, 200 ],
+  contrast:        [ 40, 250 ],
 } as const
 
 /**
@@ -69,22 +69,22 @@ export const SETTING_RANGES: SettingRanges = {
  */
 export interface BasePalette {
   // Primary HSL-derived colors
-  primary: string;
+  primary:   string;
   secondary: string;
-  tertiary: string;
-  
+  tertiary:  string;
+
   // Background color chain
-  background: string;
+  background:    string;
   veryLightGray: string;
-  lightGray: string;
-  gray: string;
-  darkGray: string;
-  veryDarkGray: string;
-  
+  lightGray:     string;
+  gray:          string;
+  darkGray:      string;
+  veryDarkGray:  string;
+
   // Raw unmixed colors (before tint application)
-  rawPrimary: string;
+  rawPrimary:   string;
   rawSecondary: string;
-  rawTertiary: string;
+  rawTertiary:  string;
 }
 
 /**
@@ -93,26 +93,26 @@ export interface BasePalette {
  */
 export interface SemanticColors {
   // Core syntax elements
-  keyword: string;
-  storage: string;
-  string: string;
-  variable: string;
-  function: string;
-  comment: string;
+  keyword:   string;
+  storage:   string;
+  string:    string;
+  variable:  string;
+  function:  string;
+  comment:   string;
   parameter: string;
-  operator: string;
-  number: string;
-  
+  operator:  string;
+  number:    string;
+
   // Additional semantic roles (extendable)
-  type: string;
-  class: string;
-  interface: string;
-  method: string;
-  property: string;
+  type:        string;
+  class:       string;
+  interface:   string;
+  method:      string;
+  property:    string;
   punctuation: string;
-  constant: string;
-  tag: string;
-  attribute: string;
+  constant:    string;
+  tag:         string;
+  attribute:   string;
 }
 
 /**
@@ -120,20 +120,20 @@ export interface SemanticColors {
  * Non-syntax colors for the editor chrome.
  */
 export interface WorkbenchColors {
-  'editor.background'?: string;
-  'editor.foreground'?: string;
-  'editorCursor.foreground'?: string;
-  'editorLineNumber.foreground'?: string;
-  'editorLineNumber.activeForeground'?: string;
-  'editorSelection.background'?: string;
-  'editorGutter.background'?: string;
-  'editorIndentGuide.background'?: string;
+  'editor.background'?:                  string;
+  'editor.foreground'?:                  string;
+  'editorCursor.foreground'?:            string;
+  'editorLineNumber.foreground'?:        string;
+  'editorLineNumber.activeForeground'?:  string;
+  'editorSelection.background'?:         string;
+  'editorGutter.background'?:            string;
+  'editorIndentGuide.background'?:       string;
   'editorIndentGuide.activeBackground'?: string;
-  'editorBracketMatch.background'?: string;
-  'editorBracketMatch.border'?: string;
-  'editorWhitespace.foreground'?: string;
-  'editorRuler.foreground'?: string;
-  [key: string]: string | undefined;
+  'editorBracketMatch.background'?:      string;
+  'editorBracketMatch.border'?:          string;
+  'editorWhitespace.foreground'?:        string;
+  'editorRuler.foreground'?:             string;
+  [key: string]:                         string | undefined;
 }
 
 /**
@@ -141,11 +141,11 @@ export interface WorkbenchColors {
  * Maps TextMate scopes to colors.
  */
 export interface TokenColorRule {
-  scope: string | string[];
+  scope:    string | string[];
   settings: {
     foreground?: string;
     background?: string;
-    fontStyle?: string;
+    fontStyle?:  string;
   };
 }
 
@@ -161,12 +161,12 @@ export interface TokenColors {
  * Contains all colors needed for a VS Code theme or similar.
  */
 export interface ThemeDefinition {
-  name?: string;
-  type?: 'light' | 'dark' | 'hc';
+  name?:                 string;
+  type?:                 'light' | 'dark' | 'hc';
   semanticHighlighting?: boolean;
-  colors: WorkbenchColors;
-  tokenColors: TokenColors;
-  semanticTokenColors?: Record<string, string>;
+  colors:                WorkbenchColors;
+  tokenColors:           TokenColors;
+  semanticTokenColors?:  Record<string, string>;
 }
 
 /**
@@ -182,33 +182,36 @@ export interface ColorPalette extends BasePalette, SemanticColors {
  * Defines the contract for the color calculation framework.
  */
 export interface HueShiftPlugin {
+
   /** Unique identifier for this plugin */
   readonly id: string;
+
   /** Human-readable name */
   readonly name: string;
+
   /** Version of the plugin */
   readonly version: string;
-  
+
   /**
    * Validate settings and clamp to valid ranges.
    */
   validateSettings(settings: Partial<HueShiftSettings>): HueShiftSettings;
-  
+
   /**
    * Calculate the base color palette from settings.
    */
   calculateBasePalette(settings: HueShiftSettings): BasePalette;
-  
+
   /**
    * Calculate semantic colors from the base palette.
    */
   calculateSemanticColors(base: BasePalette, settings: HueShiftSettings): SemanticColors;
-  
+
   /**
    * Generate a complete theme definition.
    */
   generateTheme(settings: HueShiftSettings): ThemeDefinition;
-  
+
   /**
    * Get the full color palette (base + semantic).
    */

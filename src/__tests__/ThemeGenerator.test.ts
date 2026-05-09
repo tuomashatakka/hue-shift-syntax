@@ -1,13 +1,4 @@
-import {
-  validateSettings,
-  calculateBasePalette,
-  calculateSemanticColors,
-  generateTheme,
-  getPalette,
-  createNamedTheme,
-  DEFAULT_SETTINGS,
-  SETTING_RANGES,
-} from '../ThemeGenerator'
+import { validateSettings, calculateBasePalette, calculateSemanticColors, generateTheme, getPalette, createNamedTheme, DEFAULT_SETTINGS, SETTING_RANGES } from '../ThemeGenerator'
 import type { HueShiftSettings, BasePalette, ThemeDefinition, ColorPalette } from '../types'
 
 
@@ -38,16 +29,16 @@ describe('validateSettings', () => {
 
   it('clamps all numeric settings to their ranges', () => {
     const result = validateSettings({
-      hue: 0,
-      saturation: 0,
-      luminance: 20,
-      aberration: 10,
-      drift: -10,
+      hue:             0,
+      saturation:      0,
+      luminance:       20,
+      aberration:      10,
+      drift:           -10,
       backgroundLevel: 0,
-      dimMinor: 5,
-      tintStrength: -5,
-      brightness: 50,
-      contrast: 30,
+      dimMinor:        5,
+      tintStrength:    -5,
+      brightness:      50,
+      contrast:        30,
     })
 
     expect(result.hue).toBe(1)
@@ -92,17 +83,17 @@ describe('validateSettings', () => {
 
 describe('calculateBasePalette', () => {
   const baseSettings: HueShiftSettings = {
-    hue: 250,
-    saturation: 70,
-    luminance: 70,
-    aberration: 60,
-    drift: 30,
+    hue:             250,
+    saturation:      70,
+    luminance:       70,
+    aberration:      60,
+    drift:           30,
     backgroundLevel: 30,
-    dimMinor: 40,
-    tint: '#808080',
-    tintStrength: 0,
-    brightness: 100,
-    contrast: 100,
+    dimMinor:        40,
+    tint:            '#808080',
+    tintStrength:    0,
+    brightness:      100,
+    contrast:        100,
   }
 
   it('returns a complete BasePalette', () => {
@@ -163,24 +154,24 @@ describe('calculateBasePalette', () => {
 
 describe('calculateSemanticColors', () => {
   const basePalette: BasePalette = {
-    primary: '#ff0000',
-    secondary: '#00ff00',
-    tertiary: '#0000ff',
-    background: '#1a1a1a',
+    primary:       '#ff0000',
+    secondary:     '#00ff00',
+    tertiary:      '#0000ff',
+    background:    '#1a1a1a',
     veryLightGray: '#e0e0e0',
-    lightGray: '#c0c0c0',
-    gray: '#808080',
-    darkGray: '#404040',
-    veryDarkGray: '#202020',
-    rawPrimary: '#ff0000',
-    rawSecondary: '#00ff00',
-    rawTertiary: '#0000ff',
+    lightGray:     '#c0c0c0',
+    gray:          '#808080',
+    darkGray:      '#404040',
+    veryDarkGray:  '#202020',
+    rawPrimary:    '#ff0000',
+    rawSecondary:  '#00ff00',
+    rawTertiary:   '#0000ff',
   }
 
   const baseSettings: HueShiftSettings = {
     ...DEFAULT_SETTINGS,
-    dimMinor: 40,
-    tint: '#808080',
+    dimMinor:     40,
+    tint:         '#808080',
     tintStrength: 0,
   }
 
@@ -257,9 +248,9 @@ describe('generateTheme', () => {
     // This test uses extreme values to achieve a light background.
     const lightSettings: HueShiftSettings = {
       ...DEFAULT_SETTINGS,
-      luminance: 100,
+      luminance:       100,
       backgroundLevel: 100,
-      saturation: 1,  // Very low saturation for lighter background
+      saturation:      1, // Very low saturation for lighter background
     }
     const lightTheme = generateTheme(lightSettings)
     // With the current formula, background is always dark, so type is dark
@@ -288,20 +279,20 @@ describe('generateTheme', () => {
     const scopes = theme.tokenColors.textMateRules?.map(r => r.scope) || []
 
     // Check that key syntax categories are covered
-    const hasComment = scopes.some(s => 
-      (Array.isArray(s) ? s : [s]).some(x => x.includes('comment'))
+    const hasComment = scopes.some(s =>
+      (Array.isArray(s) ? s : [ s ]).some(x => x.includes('comment'))
     )
-    const hasString = scopes.some(s => 
-      (Array.isArray(s) ? s : [s]).some(x => x.includes('string'))
+    const hasString = scopes.some(s =>
+      (Array.isArray(s) ? s : [ s ]).some(x => x.includes('string'))
     )
-    const hasKeyword = scopes.some(s => 
-      (Array.isArray(s) ? s : [s]).some(x => x.includes('keyword'))
+    const hasKeyword = scopes.some(s =>
+      (Array.isArray(s) ? s : [ s ]).some(x => x.includes('keyword'))
     )
-    const hasFunction = scopes.some(s => 
-      (Array.isArray(s) ? s : [s]).some(x => x.includes('function'))
+    const hasFunction = scopes.some(s =>
+      (Array.isArray(s) ? s : [ s ]).some(x => x.includes('function'))
     )
-    const hasVariable = scopes.some(s => 
-      (Array.isArray(s) ? s : [s]).some(x => x.includes('variable'))
+    const hasVariable = scopes.some(s =>
+      (Array.isArray(s) ? s : [ s ]).some(x => x.includes('variable'))
     )
 
     expect(hasComment).toBe(true)
@@ -343,7 +334,7 @@ describe('getPalette', () => {
   it('validates settings before generating palette', () => {
     const invalidSettings = {
       ...DEFAULT_SETTINGS,
-      hue: 500, // Out of range
+      hue:        500, // Out of range
       saturation: -10, // Out of range
     }
 
@@ -376,15 +367,15 @@ describe('createNamedTheme', () => {
 
 describe('Setting Ranges', () => {
   it('SETTING_RANGES defines all required ranges', () => {
-    expect(SETTING_RANGES.hue).toEqual([1, 360])
-    expect(SETTING_RANGES.saturation).toEqual([1, 100])
-    expect(SETTING_RANGES.luminance).toEqual([30, 100])
-    expect(SETTING_RANGES.aberration).toEqual([15, 165])
-    expect(SETTING_RANGES.drift).toEqual([0, 100])
-    expect(SETTING_RANGES.backgroundLevel).toEqual([1, 100])
-    expect(SETTING_RANGES.dimMinor).toEqual([10, 90])
-    expect(SETTING_RANGES.tintStrength).toEqual([0, 95])
-    expect(SETTING_RANGES.brightness).toEqual([60, 200])
-    expect(SETTING_RANGES.contrast).toEqual([40, 250])
+    expect(SETTING_RANGES.hue).toEqual([ 1, 360 ])
+    expect(SETTING_RANGES.saturation).toEqual([ 1, 100 ])
+    expect(SETTING_RANGES.luminance).toEqual([ 30, 100 ])
+    expect(SETTING_RANGES.aberration).toEqual([ 15, 165 ])
+    expect(SETTING_RANGES.drift).toEqual([ 0, 100 ])
+    expect(SETTING_RANGES.backgroundLevel).toEqual([ 1, 100 ])
+    expect(SETTING_RANGES.dimMinor).toEqual([ 10, 90 ])
+    expect(SETTING_RANGES.tintStrength).toEqual([ 0, 95 ])
+    expect(SETTING_RANGES.brightness).toEqual([ 60, 200 ])
+    expect(SETTING_RANGES.contrast).toEqual([ 40, 250 ])
   })
 })

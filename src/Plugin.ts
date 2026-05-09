@@ -18,7 +18,7 @@ import {
 /**
  * The main Hue Shift plugin implementation.
  * This is the framework for calculating all syntax theme colors based on settings.
- * 
+ *
  * It provides a clean API that can be used independently of VS Code,
  * making it reusable for other editors or tools.
  */
@@ -27,27 +27,27 @@ export class HueShiftPluginImpl implements HueShiftPlugin {
   readonly name = 'Hue Shift'
   readonly version = '2.0.0'
 
-  private cachedTheme?: ThemeDefinition
+  private cachedTheme?:    ThemeDefinition
   private cachedSettings?: HueShiftSettings
 
   /**
    * Validate settings and clamp to valid ranges.
    */
-  validateSettings(settings: Partial<HueShiftSettings>): HueShiftSettings {
+  validateSettings (settings: Partial<HueShiftSettings>): HueShiftSettings {
     return validateSettings(settings)
   }
 
   /**
    * Calculate the base color palette from settings.
    */
-  calculateBasePalette(settings: HueShiftSettings): BasePalette {
+  calculateBasePalette (settings: HueShiftSettings): BasePalette {
     return calculateBasePalette(settings)
   }
 
   /**
    * Calculate semantic colors from the base palette.
    */
-  calculateSemanticColors(
+  calculateSemanticColors (
     base: BasePalette,
     settings: HueShiftSettings,
   ): SemanticColors {
@@ -58,17 +58,16 @@ export class HueShiftPluginImpl implements HueShiftPlugin {
    * Generate a complete theme definition.
    * Results are cached based on the last settings used.
    */
-  generateTheme(settings: HueShiftSettings): ThemeDefinition {
+  generateTheme (settings: HueShiftSettings): ThemeDefinition {
     const validated = this.validateSettings(settings)
-    
+
     // Return cached theme if settings haven't changed
     if (
       this.cachedTheme &&
       this.cachedSettings &&
       JSON.stringify(validated) === JSON.stringify(this.cachedSettings)
-    ) {
+    )
       return this.cachedTheme
-    }
 
     this.cachedSettings = validated
     this.cachedTheme = generateTheme(validated)
@@ -78,14 +77,14 @@ export class HueShiftPluginImpl implements HueShiftPlugin {
   /**
    * Get the full color palette (base + semantic).
    */
-  getPalette(settings: HueShiftSettings): ColorPalette {
+  getPalette (settings: HueShiftSettings): ColorPalette {
     return getPalette(settings)
   }
 
   /**
    * Clear any cached theme data.
    */
-  clearCache(): void {
+  clearCache (): void {
     this.cachedTheme = undefined
     this.cachedSettings = undefined
   }
@@ -93,21 +92,21 @@ export class HueShiftPluginImpl implements HueShiftPlugin {
   /**
    * Get the current cached theme without recalculation.
    */
-  getCachedTheme(): ThemeDefinition | undefined {
+  getCachedTheme (): ThemeDefinition | undefined {
     return this.cachedTheme
   }
 
   /**
    * Get the current cached settings without recalculation.
    */
-  getCachedSettings(): HueShiftSettings | undefined {
+  getCachedSettings (): HueShiftSettings | undefined {
     return this.cachedSettings
   }
 
   /**
    * Create a theme with custom settings and a name.
    */
-  createTheme(name: string, settings: Partial<HueShiftSettings>): ThemeDefinition {
+  createTheme (name: string, settings: Partial<HueShiftSettings>): ThemeDefinition {
     const fullSettings = this.validateSettings(settings)
     const theme = this.generateTheme(fullSettings)
     theme.name = name
@@ -117,7 +116,7 @@ export class HueShiftPluginImpl implements HueShiftPlugin {
   /**
    * Get the default theme.
    */
-  getDefaultTheme(): ThemeDefinition {
+  getDefaultTheme (): ThemeDefinition {
     return this.generateTheme({ ...DEFAULT_SETTINGS })
   }
 }
@@ -126,7 +125,7 @@ export class HueShiftPluginImpl implements HueShiftPlugin {
 export const hueShiftPlugin = new HueShiftPluginImpl()
 
 // Factory function for creating plugin instances
-export function createHueShiftPlugin(): HueShiftPlugin {
+export function createHueShiftPlugin (): HueShiftPlugin {
   return new HueShiftPluginImpl()
 }
 

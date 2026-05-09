@@ -1,13 +1,31 @@
 # Hue Shift Syntax
 
 <div align="center">
-  <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-    <div style="width: 60px; height: 60px; background-color: #FFD1DC; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#FFD1DC</div>
-    <div style="width: 60px; height: 60px; background-color: #FFE5B4; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#FFE5B4</div>
-    <div style="width: 60px; height: 60px; background-color: #FFFFE0; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#FFFFE0</div>
-    <div style="width: 60px; height: 60px; background-color: #E6E6FA; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#E6E6FA</div>
-    <div style="width: 60px; height: 60px; background-color: #B5EAD7; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#B5EAD7</div>
-    <div style="width: 60px; height: 60px; background-color: #C7CEEA; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #333;">#C7CEEA</div>
+  <div style="display: flex; gap: 1px; justify-content: center; color: #303030; font-size: 10px; font-weight: 500; line-height: 16px">
+    <article style="flex-basis: 64px;">
+      <div style="width: 100%; padding-bottom: 100%; background: #88eff6;"></div>
+      <div style="background: white">#88eff6</div>
+    </article>
+    <article style="flex-basis: 64px;">
+      <div style="width: 100%; padding-bottom: 100%; background: #9bbdfb;"></div>
+      <div style="background: white">#9bbdfb</div>
+    </article>
+    <article style="flex-basis: 64px;">
+      <div style="width: 100%; padding-bottom: 100%; background: #ada6f6;"></div>
+      <div style="background: white">#ada6f6</div>
+    </article>
+    <article style="flex-basis: 64px;">
+      <div style="width: 100%; padding-bottom: 100%; background: #cd99f8;"></div>
+      <div style="background: white">#cd99f8</div>
+    </article>
+    <article style="flex-basis: 64px;">
+      <div style="width: 100%; padding-bottom: 100%; background: #fcb3fa;"></div>
+      <div style="background: white">#fcb3fa</div>
+    </article>
+    <article style="flex-basis: 64px;">
+      <div style="width: 100%; padding-bottom: 100%; background: #e93b9d;"></div>
+      <div style="background: white">#e93b9d</div>
+    </article>
   </div>
 </div>
 
